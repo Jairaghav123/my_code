@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
+import 'package:myanimations/3dobjects/objects_3d.dart';
+import 'package:myanimations/car_hmi/car_hmi_dashboard.dart';
 import 'package:myanimations/my_all_animations/arc_animation.dart';
 import 'package:myanimations/my_all_animations/rotating_rectangle.dart';
 
@@ -16,11 +18,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowMaterialGrid:false,
+      debugShowCheckedModeBanner:false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
 
       ),
-      home:const rotating_arc(),
+      home:const CarHMIDashboard(),
+      //const My3DObjects(),
+      //const rotating_arc(),
       //rotating_object()
       //CarAnimation(),
     );
