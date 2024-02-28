@@ -19,7 +19,10 @@ class CarHMIDashboard extends StatefulWidget {
   State<CarHMIDashboard> createState() => _CarHMIDashboardState();
 }
 
-class _CarHMIDashboardState extends State<CarHMIDashboard> {
+class _CarHMIDashboardState extends State<CarHMIDashboard> with TickerProviderStateMixin {
+
+   late AnimationController mycontroller;
+   late Animation<double> myanimation ;
    final List<double> speedLinesOpacities=[1,
      .80,
      0.60,
@@ -30,6 +33,12 @@ class _CarHMIDashboardState extends State<CarHMIDashboard> {
      0.10
    ];
   @override
+  
+  void initState() {
+
+
+    super.initState();
+  }
   Widget build(BuildContext context) {
     final Size size=MediaQuery.of(context).size ;
     return  Scaffold(
@@ -46,71 +55,74 @@ class _CarHMIDashboardState extends State<CarHMIDashboard> {
             aspectRatio:2.59,
             child:LayoutBuilder(
               builder: (context,constraints) {
-                return CustomPaint(
-                  painter: HmiShape(),
-                  child: Column(
-                    children:  [
-                      timeandtemp(constraints: constraints,),
-                      Expanded(
-                          child: Stack(
-                        children: [
-                          Column(
+                return AnimatedBuilder(
+                  animation:mycontroller,
+                  builder: (BuildContext context, Widget? child) { return CustomPaint(
+                    painter: HmiShape(),
+                    child: Column(
+                      children:  [
+                        timeandtemp(constraints: constraints,),
+                        Expanded(
+                            child: Stack(
+                              children: [
+                                Column(
 
-                            children:   [
-                              const SizedBox(height:defaultPadding*1.25,),
+                                  children:   [
+                                    const SizedBox(height:defaultPadding*1.25,),
 
-                              const carIndicators(),
-                              const SizedBox(height:60,),
-                              const carspeed(speed: 50,),
-                              const SizedBox(height:30,),
-                              const speedlimit(),
-                              const SizedBox(height:defaultPadding*0.7,),
-                              Gearprinter_widget(constraints: constraints,),
+                                    const carIndicators(),
+                                    const SizedBox(height:60,),
+                                    const carspeed(speed: 50,),
+                                    const SizedBox(height:30,),
+                                    const speedlimit(),
+                                    const SizedBox(height:defaultPadding*0.7,),
+                                    Gearprinter_widget(constraints: constraints,),
 
-                        ],
-                      ),
-                      ...List.generate(speedLinesOpacities.length, (index) => Positioned(
-
-
-                          bottom: 20 + (2*index).toDouble(),
-                            left: constraints.maxWidth*0.13 -(30 * index),
-                            height: constraints.maxHeight*0.8,
-                            width: constraints.maxWidth*0.31,
-
-                          child:Opacity(
-                            opacity: speedLinesOpacities[index],
-                            child: CustomPaint(
-                        painter: SpeedLinePainter(),),
-                          ))),
-
-
-                          ...List.generate(speedLinesOpacities.length, (index) => Positioned(
-
-
-                              bottom: 20 + (2*index).toDouble(),
-                              right: constraints.maxWidth*0.13 -(30 * index),
-                              height: constraints.maxHeight*0.8,
-                              width: constraints.maxWidth*0.31,
-
-                              child:Opacity(
-                                opacity: speedLinesOpacities[index],
-                                child: Transform.scale(
-                                  scaleX: -1,
-                                  child: CustomPaint(
-                                    painter: SpeedLinePainter(),),
+                                  ],
                                 ),
-                              )))
-                  //     ) ))
-
-                        ],
-
-                          )),
+                                ...List.generate(speedLinesOpacities.length, (index) => Positioned(
 
 
+                                    bottom: 20 + (2*index).toDouble(),
+                                    left: constraints.maxWidth*0.13 -(30 * index),
+                                    height: constraints.maxHeight*0.8,
+                                    width: constraints.maxWidth*0.31,
 
-                    ],
-                  ),
+                                    child:Opacity(
+                                      opacity: speedLinesOpacities[index],
+                                      child: CustomPaint(
+                                        painter: SpeedLinePainter(),),
+                                    ))),
 
+
+                                ...List.generate(speedLinesOpacities.length, (index) => Positioned(
+
+
+                                    bottom: 20 + (2*index).toDouble(),
+                                    right: constraints.maxWidth*0.13 -(30 * index),
+                                    height: constraints.maxHeight*0.8,
+                                    width: constraints.maxWidth*0.31,
+
+                                    child:Opacity(
+                                      opacity: speedLinesOpacities[index],
+                                      child: Transform.scale(
+                                        scaleX: -1,
+                                        child: CustomPaint(
+                                          painter: SpeedLinePainter(),),
+                                      ),
+                                    )))
+                                //     ) ))
+
+                              ],
+
+                            )),
+
+
+
+                      ],
+                    ),
+
+                  ); },
                 );
               }
             ),

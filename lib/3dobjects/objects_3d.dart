@@ -1,6 +1,22 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_cube/flutter_cube.dart';
 //https://sketchfab.com/3d-models/ural-truck-diorama-low-poly-0f5af026e75248aaa7010990edbf677b
+
+
+/*
+First we create the object type variable
+
+Do the below steps in the init function
+Assign the object by passing the file name inside it
+pass the position by .set values function pass the x ,y ,z cordinate inside it
+
+
+//wraping of 3d objects
+Wrap the 3d object with the cube widget
+pass the on scene create arguments
+ */
 
 class My3DObjects extends StatefulWidget {
   const My3DObjects({super.key});
@@ -45,12 +61,18 @@ class _My3DObjectsState extends State<My3DObjects> {
 
            height:MediaQuery.of(context).size.height*1,
            width:MediaQuery.of(context).size.width*1,
-          child:Cube(
+          child:Transform.rotate(
+            angle: 0,
+            
 
-            onSceneCreated:(Scene scene){
-              scene.world.add(MyJet);
-              scene.camera.zoom=12;
-            }
+            alignment:Alignment.center,
+            child: Cube(
+
+              onSceneCreated:(Scene scene){
+                scene.world.add(MyJet);
+                scene.camera.zoom=12;
+              }
+            ),
           ),
         ),
       ),

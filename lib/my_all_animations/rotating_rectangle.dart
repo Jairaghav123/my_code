@@ -22,7 +22,7 @@ class _rotating_objectState extends State<rotating_object> with TickerProviderSt
   void initState() {
 
     mycontroller=AnimationController(vsync: this);
-    myanimation=Tween(begin:0.0,end:2*pi).animate(mycontroller);
+    myanimation=Tween(begin:0.0,end:pi/2).animate(mycontroller); //2*pi
     mycontroller.repeat(period:const Duration(seconds:5));
 
     super.initState();
@@ -50,16 +50,16 @@ class _rotating_objectState extends State<rotating_object> with TickerProviderSt
               transform: Matrix4.identity()..rotateX(myanimation.value),
               child: Container(
 
-                height:100,
-                width:100,
+                height:400,
+                width:400,
                 decoration:BoxDecoration(
                   shape:BoxShape.rectangle,
-                  color:Colors.blue,
-                  border:Border.all(width:2,color:Colors.lightBlueAccent.withOpacity(.5)),
+                  color:Colors.black, //blue
+                  border:Border.all(width:2,color:Colors.black.withOpacity(1)), //light blue accent with opacity 0.5
                   borderRadius:BorderRadius.circular(10),
                   boxShadow:const [
                     BoxShadow(
-                      color:Colors.white,
+                      color:Colors.black, //white
                       blurRadius:2,
                       spreadRadius:3,
                     )
@@ -69,6 +69,8 @@ class _rotating_objectState extends State<rotating_object> with TickerProviderSt
 
                   ,
                 ),
+                
+                child: Image.asset("assets/blackcar.png"),
               ),
             );
           },

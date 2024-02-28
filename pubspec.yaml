@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_cube: ^0.1.1
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -66,6 +67,7 @@ flutter:
     - assets/jet/
     - assets/ural_truck_diorama_low_poly/
     - assets/hummer-ev-low-poly/
+    - assets/blackcar.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
