@@ -8,6 +8,7 @@ import 'package:myanimations/car_hmi/car_hmi_dashboard.dart';
 import 'package:myanimations/my_all_animations/arc_animation.dart';
 import 'package:myanimations/my_all_animations/rotating_rectangle.dart';
 import 'package:myanimations/shaderapp/shader.dart';
+import 'package:neon_widgets/neon_widgets.dart';
 
 
 void main() {
@@ -249,14 +250,6 @@ class CarAnimation extends StatefulWidget {
 class _CarAnimationState extends State<CarAnimation> with SingleTickerProviderStateMixin {
   late AnimationController animationController;
   late Animation<Offset> animation;
-  late Animation<Offset> animation2;
-  late Animation<Offset> animation3;
-  late Animation<Offset> animation4;
-  late Animation<Offset> animation5;
-  late Animation<Offset> animation6;
-  late Animation<Offset> animation7;
-  late Animation<Offset> animation8;
-
 
 
 
@@ -274,76 +267,7 @@ class _CarAnimationState extends State<CarAnimation> with SingleTickerProviderSt
       CurvedAnimation(parent: animationController, curve: Curves.linear),
     );
 
-    ///////////
-    animation2 = Tween<Offset>(
-      begin: const Offset(0.0, 0.0), //
-      end: Offset(0.0, 0.07),
-    ).animate(
-      CurvedAnimation(parent: animationController, curve: Curves.linear),
-    );
 
-
-    /////////////////////////////////
-    animation3 = Tween<Offset>(
-      begin: const Offset(0.0, 0.0), //
-      end: Offset(0.0, 0.07),
-    ).animate(
-      CurvedAnimation(parent: animationController, curve: Curves.linear),
-    );
-
-
-
-    ////////////////////////
-    animation4 = Tween<Offset>(
-      begin: const Offset(0.0, 0.0), //
-      end: Offset(0.0, 0.07),
-    ).animate(
-      CurvedAnimation(parent: animationController, curve: Curves.linear),
-    );
-
-
-    animation5 = Tween<Offset>(
-      begin: const Offset(0.0, 0.0), //
-      end: Offset(0.0, 0.07),
-    ).animate(
-      CurvedAnimation(parent: animationController, curve: Curves.linear),
-    );
-
-
-    ///////
-
-    animation6 = Tween<Offset>(
-      begin: const Offset(0.0, 0.0), //
-      end: Offset(0.0, 0.07),
-    ).animate(
-      CurvedAnimation(parent: animationController, curve: Curves.linear),
-    );
-
-
-      ///////////////
-
-    animation7 = Tween<Offset>(
-      begin: const Offset(0.0, 0.0), //
-      end: Offset(0.0, 0.07),
-    ).animate(
-      CurvedAnimation(parent: animationController, curve: Curves.linear),
-    );
-
-
-
-    ////////////
-
-
-    animation8 = Tween<Offset>(
-      begin: const Offset(0.0, 0.0), //
-      end: Offset(0.0, 0.07),
-    ).animate(
-      CurvedAnimation(parent: animationController, curve: Curves.linear),
-    );
-
-
-
-    /////////
     animationController.repeat(period:Duration(seconds: 2));
   }
 
@@ -380,6 +304,7 @@ class _CarAnimationState extends State<CarAnimation> with SingleTickerProviderSt
             ),
           ),
 
+         //static container
 
 
 
@@ -396,7 +321,16 @@ class _CarAnimationState extends State<CarAnimation> with SingleTickerProviderSt
 
           ),
 
-            ///test container
+
+
+          Center(
+            child: Container(color:Colors.white,height: MediaQuery.of(context).size.height*0.005,
+              width: MediaQuery.of(context).size.width*0.14,margin:EdgeInsets.only(top:0),),
+          ),
+
+
+
+          ///test container
 
 
 
@@ -419,7 +353,7 @@ class _CarAnimationState extends State<CarAnimation> with SingleTickerProviderSt
 
             builder: (BuildContext context, Widget? child) {  return Center(
               child: Transform.translate(
-                offset: Offset(0, animation2.value.dy * MediaQuery.of(context).size.height), //animation2.value.dy * MediaQuery.of(context).size.width
+                offset: Offset(0, animation.value.dy * MediaQuery.of(context).size.height), //animation2.value.dy * MediaQuery.of(context).size.width
                 child: Container(margin:EdgeInsets.only(top:100,),color:Colors.blue,height: MediaQuery.of(context).size.height*0.01,
                   width: MediaQuery.of(context).size.width*0.1,),
               ),
@@ -435,7 +369,7 @@ class _CarAnimationState extends State<CarAnimation> with SingleTickerProviderSt
 
             builder: (BuildContext context, Widget? child) {  return Center(
               child: Transform.translate(
-                offset: Offset(0, animation3.value.dy * MediaQuery.of(context).size.height),
+                offset: Offset(0, animation.value.dy * MediaQuery.of(context).size.height),
                 child: Container(margin:EdgeInsets.only(top:200,),color:Colors.blue,height: MediaQuery.of(context).size.height*0.01,
                   width: MediaQuery.of(context).size.width*0.1,),
               ),
@@ -453,7 +387,7 @@ class _CarAnimationState extends State<CarAnimation> with SingleTickerProviderSt
 
             builder: (BuildContext context, Widget? child) {  return Center(
               child: Transform.translate(
-                offset: Offset(0, animation4.value.dy * MediaQuery.of(context).size.height),
+                offset: Offset(0, animation.value.dy * MediaQuery.of(context).size.height),
                 child: Container(margin:EdgeInsets.only(top:300,),color:Colors.blue,height: MediaQuery.of(context).size.height*0.01,
                   width: MediaQuery.of(context).size.width*0.1,),
               ),
@@ -472,7 +406,7 @@ class _CarAnimationState extends State<CarAnimation> with SingleTickerProviderSt
 
             builder: (BuildContext context, Widget? child) {  return Center(
               child: Transform.translate(
-                offset: Offset(0, animation5.value.dy * MediaQuery.of(context).size.height),
+                offset: Offset(0, animation.value.dy * MediaQuery.of(context).size.height),
                 child: Container(margin:EdgeInsets.only(top:400,),color:Colors.blue,height: MediaQuery.of(context).size.height*0.01,
                   width: MediaQuery.of(context).size.width*0.1,),
               ),
@@ -489,7 +423,7 @@ class _CarAnimationState extends State<CarAnimation> with SingleTickerProviderSt
 
             builder: (BuildContext context, Widget? child) {  return Center(
               child: Transform.translate(
-                offset: Offset(0, animation6.value.dy * MediaQuery.of(context).size.height),
+                offset: Offset(0, animation.value.dy * MediaQuery.of(context).size.height),
                 child: Container(margin:EdgeInsets.only(top:500,),color:Colors.blue,height: MediaQuery.of(context).size.height*0.01,
                   width: MediaQuery.of(context).size.width*0.1,),
               ),
@@ -506,7 +440,7 @@ class _CarAnimationState extends State<CarAnimation> with SingleTickerProviderSt
 
             builder: (BuildContext context, Widget? child) {  return Center(
               child: Transform.translate(
-                offset: Offset(0, animation7.value.dy * MediaQuery.of(context).size.height),
+                offset: Offset(0, animation.value.dy * MediaQuery.of(context).size.height),
                 child: Container(margin:EdgeInsets.only(top:500,),color:Colors.blue,height: MediaQuery.of(context).size.height*0.01,
                   width: MediaQuery.of(context).size.width*0.1,),
               ),
@@ -522,7 +456,7 @@ class _CarAnimationState extends State<CarAnimation> with SingleTickerProviderSt
 
             builder: (BuildContext context, Widget? child) {  return Center(
               child: Transform.translate(
-                offset: Offset(0, animation8.value.dy * MediaQuery.of(context).size.height),
+                offset: Offset(0, animation.value.dy * MediaQuery.of(context).size.height),
                 child: Container(margin:EdgeInsets.only(top:600,),color:Colors.blue,height: MediaQuery.of(context).size.height*0.01,
                   width: MediaQuery.of(context).size.width*0.1,),
               ),
@@ -541,7 +475,9 @@ class _CarAnimationState extends State<CarAnimation> with SingleTickerProviderSt
                   margin:EdgeInsets.only(top:400),
                   height: 200,
                   width: 200,
-                  child: Image.asset("assets/car.png"),
+                  child: oFlicker(    //we can remove the flicker widget to stop the flick operation
+                   // flickerTimeInMilliSeconds:000,
+                      child: Image.asset("assets/car.png")),
                 ),
               ),
 
