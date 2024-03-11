@@ -69,6 +69,9 @@ flutter:
     - assets/ural_truck_diorama_low_poly/
     - assets/hummer-ev-low-poly/
     - assets/blackcar.png
+    - assets/truck3d.png
+    - assets/truck2.png
+    - assets/whitecar.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
 import 'package:myanimations/3dobjects/my3D_animation_practice/myanimation1.dart';
 import 'package:myanimations/3dobjects/objects_3d.dart';
+import 'package:myanimations/Rivian/rivian_splash_screen.dart';
 import 'package:myanimations/car_hmi/car_hmi_dashboard.dart';
 import 'package:myanimations/my_all_animations/arc_animation.dart';
 import 'package:myanimations/my_all_animations/rotating_rectangle.dart';
@@ -27,13 +28,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home://My3DObjects(),
+      home:const rivian_splash_screen()
+      //My3DObjects(),
       //const MyAnimation1(),
       //const rotating_arc(),
      // rotating_object(),
       //CarHMIDashboard()
       //ShaderApp(), //
-      CarAnimation(),
+     // CarAnimation(),
     );
   }
 }
@@ -247,15 +249,32 @@ class CarAnimation extends StatefulWidget {
   _CarAnimationState createState() => _CarAnimationState();
 }
 
-class _CarAnimationState extends State<CarAnimation> with SingleTickerProviderStateMixin {
+class _CarAnimationState extends State<CarAnimation> with TickerProviderStateMixin {
   late AnimationController animationController;
   late Animation<Offset> animation;
+  late Animation<Offset> slideanimation ;
+  late Animation<double> opacityanimation ;
 
+  late Animation<Offset> slideanimation3 ;
+  late Animation<double> opacityanimation3;
+  late AnimationController animationController2;
+  late AnimationController animationController3;
 
 
   @override
   void initState() {
     super.initState();
+
+    animationController3 = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 20),
+    );
+    animationController2 = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 20),
+    );
+
+
     animationController = AnimationController(
       vsync: this,
       duration: Duration(seconds: 20),
@@ -267,7 +286,42 @@ class _CarAnimationState extends State<CarAnimation> with SingleTickerProviderSt
       CurvedAnimation(parent: animationController, curve: Curves.linear),
     );
 
+    slideanimation = Tween<Offset>(
+      begin: const Offset(0.0, 0), //
+      end: const Offset(0.0, -0.4), //0.02
+    ).animate(
+      CurvedAnimation(parent: animationController2, curve: Curves.linear),
+    );
 
+
+    opacityanimation = Tween<double>(
+      begin:  1.0, //
+      end: 0//0.02
+    ).animate(
+      CurvedAnimation(parent: animationController2, curve: Curves.linear),
+    );
+
+
+
+
+
+    slideanimation3 = Tween<Offset>(
+      begin: const Offset(0.0, 0), //
+      end: const Offset(0.0, -0.4), //0.02
+    ).animate(
+      CurvedAnimation(parent: animationController3, curve: Curves.linear),
+    );
+
+
+    opacityanimation3 = Tween<double>(
+        begin:  1.0, //
+        end: 0//0.02
+    ).animate(
+      CurvedAnimation(parent: animationController3, curve: Curves.linear),
+    );
+
+    animationController3.repeat(period:Duration(seconds: 8));
+    animationController2.repeat(period:Duration(seconds: 5));
     animationController.repeat(period:Duration(seconds: 2));
   }
 
@@ -288,10 +342,13 @@ class _CarAnimationState extends State<CarAnimation> with SingleTickerProviderSt
         children: [
 
 
+
+
+
           Center(
             child: Container(
               margin:EdgeInsets.only(top:150),
-              color:Colors.black,
+             // color:Colors.black,
 
 
               width:MediaQuery.of(context).size.width*0.5,
@@ -472,18 +529,67 @@ class _CarAnimationState extends State<CarAnimation> with SingleTickerProviderSt
 
                Center(
                 child: Container(
+
                   margin:EdgeInsets.only(top:400),
-                  height: 200,
-                  width: 200,
-                  child: oFlicker(    //we can remove the flicker widget to stop the flick operation
-                   // flickerTimeInMilliSeconds:000,
-                      child: Image.asset("assets/car.png")),
+                  height: 180,
+                  width: 180,
+                  // child: oFlicker(    //we can remove the flicker widget to stop the flick operation
+                  //  // flickerTimeInMilliSeconds:000,
+                  //     child: Image.asset("assets/car.png")),
+                  
+                  
+                  child: Image.asset("assets/car.png"),
                 ),
               ),
+//////////////////////////////////
+
+          FadeTransition(
+            
+            opacity: opacityanimation3,
+            child: SlideTransition(
+              position: slideanimation3,
+              child: Center(
+                child: Container(
+
+                  margin:EdgeInsets.only(top:600,left:290),
+                  height: 120,
+                  width: 120,
+                  // child: oFlicker(    //we can remove the flicker widget to stop the flick operation
+                  //  // flickerTimeInMilliSeconds:000,
+                  //     child: Image.asset("assets/car.png")),
 
 
+                  child: Image.asset("assets/whitecar.png"),
+                ),
+              ),
+            ),
+          ),
 
-     ] ),
+          //////////////////////////////////////////////
+
+
+          FadeTransition(
+            opacity: opacityanimation,
+            child: SlideTransition(
+              position: slideanimation,
+              child: Center(
+                child: Container(
+
+                  margin:EdgeInsets.only(top:600,right:310),
+                  height: 140,
+                  width: 200,
+                  // child: oFlicker(    //we can remove the flicker widget to stop the flick operation
+                  //  // flickerTimeInMilliSeconds:000,
+                  //     child: Image.asset("assets/car.png")),
+
+                  child: Image.asset("assets/truck2.png"),
+                ),
+              ),
+            ),
+          ),
+
+
+        ] ),
 
 
     );
@@ -510,17 +616,17 @@ class mypaint extends CustomPainter
 
     mypaint.color=Colors.white;
     mypaint.strokeWidth=2;
-    mypath.moveTo(size.width*0.4, size.height*.2);
+    mypath.moveTo(size.width*0.34, size.height*.2);
 
-    mypath.lineTo(size.width*0.2, size.height*1);
+    mypath.lineTo(size.width*0.33, size.height*1);
 
     canvas.drawPath(mypath, mypaint);
 
     mypaint2.style=PaintingStyle.stroke;
     mypaint2.color=Colors.white;
     mypaint2.strokeWidth=2;
-    mypath2.moveTo(size.width*0.6, size.height*.2);
-    mypath2.lineTo(size.width*0.8, size.height*1);
+    mypath2.moveTo(size.width*0.66, size.height*.2);
+    mypath2.lineTo(size.width*0.67, size.height*1);
 
     canvas.drawPath(mypath2, mypaint2);
     canvas.drawShadow(mypath, Colors.cyan, 14, false);
