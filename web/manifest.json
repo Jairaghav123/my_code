@@ -1,6 +1,6 @@
 {
-    "name": "myanimations",
-    "short_name": "myanimations",
+    "name": "flutter_ics_homescreen",
+    "short_name": "flutter_ics_homescreen",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
