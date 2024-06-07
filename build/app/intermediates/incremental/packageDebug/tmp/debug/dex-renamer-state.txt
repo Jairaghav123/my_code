@@ -1,4 +1,0 @@
-#Fri Jun 07 12:46:27 IST 2024
-base.0=/home/jai/Documents/local_flutter_apps/jai/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
-renamed.0=classes.dex
-path.0=classes.dex
