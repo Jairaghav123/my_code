@@ -1,4 +1,4 @@
-# jai
+# flutter_ics_homescreen
 
 A new Flutter project.
 
