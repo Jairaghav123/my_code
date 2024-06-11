@@ -78,7 +78,7 @@ class _BootScreenState extends State<BootScreen> with SingleTickerProviderStateM
                     ,style: TextStyle(fontSize:20,fontWeight:FontWeight.normal,color:Colors.white),),
               ),
               //const SizedBox(height: 30,),
-              const Spacer(),
+              const Spacer(flex:1),
                 Container(
                   alignment: Alignment.center,
 

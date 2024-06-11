@@ -6,6 +6,7 @@ import 'package:flutter_ics_homescreen/viewdatalogscreen.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
+import 'Data/variables/variables.dart';
 import 'datalogscreenwidget.dart';
 
 
@@ -53,12 +54,12 @@ class _DataLogScreenState extends State<DataLogScreen> {
                       Row(
                         children: [
                           const Icon(Icons.calendar_month_rounded,color:Colors.white),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: 14,color:Colors.white),),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white),),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: 16,color:Colors.white)),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white)),
                         ],
                       ),
                     ],
@@ -116,7 +117,7 @@ class _DataLogScreenState extends State<DataLogScreen> {
                     child: SfSlider.vertical(
                       min: 0.0,
                       max: 100.0,
-                      value: 10,
+                      value: _value,
                       interval: 20,
                       showTicks: false,
                       showLabels: false,
@@ -150,7 +151,7 @@ class _DataLogScreenState extends State<DataLogScreen> {
                         // Action for top camera view button
                         Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const ViewDataLogScreen()));
                       },
-                      child: const Text('View'),
+                      child: const Text('View',style: TextStyle(color: Colors.white,fontSize: 20),),
                     ),
                   ),
 
@@ -167,7 +168,7 @@ class _DataLogScreenState extends State<DataLogScreen> {
                       onPressed: () {
                         // Action for top camera view button
                       },
-                      child: const Text('Print '),
+                      child: const Text('Print ',style: TextStyle(color: Colors.white,fontSize: 20)),
 
 
 
@@ -188,7 +189,7 @@ class _DataLogScreenState extends State<DataLogScreen> {
                       onPressed: () {
                         // Action for top camera view button
                       },
-                      child: const Text('Email '),
+                      child: const Text('Email ',style: TextStyle(color: Colors.white,fontSize: 20)),
                     ),
                   ),
 
@@ -206,7 +207,7 @@ class _DataLogScreenState extends State<DataLogScreen> {
                         // Action for top camera view button
                         Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const Screen2()));
                       },
-                      child: const Text('Delete '),
+                      child: const Text('Delete ',style: TextStyle(color: Colors.white,fontSize: 20)),
                     ),
                   ),
 
@@ -222,7 +223,7 @@ class _DataLogScreenState extends State<DataLogScreen> {
                         // Action for top camera view button
                         Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const Screen1()));
                       },
-                      child: const Text('Home '),
+                      child: const Text('Home ',style: TextStyle(color: Colors.white,fontSize: 20)),
                     ),
                   ),
 
@@ -244,8 +245,8 @@ class _DataLogScreenState extends State<DataLogScreen> {
               child:  const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.analytics_outlined,color: Colors.white,),
-                  Text('Stored Analysis Data ',style:TextStyle(color:Colors.white),),
+                  Icon(Icons.analytics_outlined,color: Colors.white,size: iconbelowscreen,),
+                  Text('Stored Analysis Data ',style:TextStyle(color:Colors.white,fontSize:25),),
                 ],
               ),
             ),

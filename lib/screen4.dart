@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ics_homescreen/Data/variables/variables.dart';
 import 'package:flutter_ics_homescreen/screen2.dart';
 import 'package:flutter_ics_homescreen/screensize.dart';
 import 'package:flutter_ics_homescreen/sliderscreen3.dart';
@@ -46,12 +47,12 @@ class _Screen4State extends State<Screen4> {
                       Row(
                         children: [
                           const Icon(Icons.calendar_month_rounded,color:Colors.white),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: 14,color:Colors.white),),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white),),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: 16,color:Colors.white)),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white)),
                         ],
                       ),
                     ],
@@ -81,8 +82,9 @@ class _Screen4State extends State<Screen4> {
                     child:  Column(
                       mainAxisAlignment:MainAxisAlignment.center,
                       children: [
-                        Image.asset("asset/cinemabg.png",height: 30,width: 30,),
-                        const Text("Top Light settings"),
+                        Image.asset("asset/cinemabg.png",height: 80,width: 80,),
+                        const SizedBox(height:10),
+                        const Text("Top Light settings",style:TextStyle(fontSize:20,color:Colors.white)),
                       ],
                     ),
                   ),
@@ -117,17 +119,17 @@ class _Screen4State extends State<Screen4> {
                   child:  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.settings,size:35,color:Colors.blue,),
+                      Icon(Icons.settings,size:50,color:Colors.blue,),
                       Text('Adjust Bottom Camera and Top lighting parameters ',style: TextStyle(fontSize: 25,color:Colors.white),),
                     ],
                   ),
                 ),
 
                 const SizedBox(width:5),
-                SizedBox(height:screenHeight*0.07,child: ElevatedButton(onPressed: (){
+                SizedBox(height:screenHeight*0.07,width:130,child: ElevatedButton(onPressed: (){
 
                   Navigator.pushNamed(context, "SettingsScreen");
-                }, child: const Text("Back"))),
+                }, child: const Text("Back",style: TextStyle(fontSize: 20,color:Colors.white),))),
 
 
               ],

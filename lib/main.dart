@@ -31,7 +31,7 @@ void main () async
     {
 
       WindowManager.instance.setMinimumSize(const Size(1920,1080));
-      WindowManager.instance.setMaximumSize(const Size(1920, 1080));
+      WindowManager.instance.setMaximumSize(const Size(1920,1080));
     }
   runApp(const MyApp());
 

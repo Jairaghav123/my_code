@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+
+import 'Data/variables/variables.dart';
 class AnalysisScreenWidget extends StatelessWidget {
+  final  TextEditingController;
+
   const AnalysisScreenWidget({
     super.key,
     required this.screenwidth,
-    required this.screenheight, required this.innertext,
+    required this.screenheight, required this.TextEditingController, required this.hinttext,
   });
 
   final double screenwidth;
   final double screenheight;
-  final String innertext ;
+  //final String innertext ;
+  final String hinttext ;
+
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +24,17 @@ class AnalysisScreenWidget extends StatelessWidget {
       child:
 
 
-          Container(alignment:Alignment.center,color:Colors.blue ,width:screenwidth*0.40,height:screenheight*0.05,child: Text(innertext),),
+          Container(alignment:Alignment.center,color:Colors.blue ,width:screenwidth*0.40,height:screenheight*0.05,child: TextField(
+            controller:TextEditingController,
+            keyboardType: TextInputType.text,
+            textAlign:TextAlign.center,
+            style: const TextStyle(color: Colors.white,fontSize:startAnalysisscreenfontsize),
+            decoration: InputDecoration(
+              hintText: hinttext,
+                  hintStyle:const TextStyle(color: Colors.white,fontSize: startAnalysisscreenfontsize)
+            ),
+
+              ),),
 
 
     );

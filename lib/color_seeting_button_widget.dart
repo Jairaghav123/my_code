@@ -33,8 +33,9 @@ class _color_setting_buttonState extends State<color_setting_button> {
         child:  Column(
           mainAxisAlignment:MainAxisAlignment.center,
           children: [
-            Icon(widget.myicon,color:widget.iconcolors,size:40,),
-            Text(widget.myText),
+            Icon(widget.myicon,color:widget.iconcolors,size:110,),
+            const SizedBox(height: 10,),
+            Text(widget.myText,style: const TextStyle(color:Colors.white,fontSize: 20),),
           ],
         ),
       ),

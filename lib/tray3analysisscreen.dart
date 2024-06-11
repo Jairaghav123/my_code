@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ics_homescreen/screensize.dart';
 import 'package:intl/intl.dart';
 
+import 'Data/variables/variables.dart';
+
 
 class Tray3Analysis extends StatefulWidget {
   const Tray3Analysis({super.key});
@@ -73,8 +75,8 @@ class _Tray3AnalysisState extends State<Tray3Analysis> {
                   const Row(
                     mainAxisAlignment:MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('0%'),
-                      Text('100%'),
+                      Text('0%',style: TextStyle(fontSize:20,color: Colors.white),),
+                      Text('100%',style:TextStyle(fontSize: 20,color: Colors.white),),
                     ],
                   ),
                 ],
@@ -97,7 +99,7 @@ class _Tray3AnalysisState extends State<Tray3Analysis> {
                       onPressed: () {
                         // Action for top camera view button
                       },
-                      child: const Text('Restart Tray 3'),
+                      child: const Text('Restart Tray 3',style: TextStyle(fontSize:20),),
                     ),
                   ),
                 ),
@@ -117,7 +119,7 @@ class _Tray3AnalysisState extends State<Tray3Analysis> {
                         // Action for top camera view button
                         Navigator.pushNamed(context, "Results Screen");
                       },
-                      child: const Text('Finish '),
+                      child: const Text('Finish ',style: TextStyle(fontSize:20),),
                     ),
                   ),
                 ),
@@ -137,7 +139,7 @@ class _Tray3AnalysisState extends State<Tray3Analysis> {
 
                         Navigator.pushNamed(context, "Tray 2 Analysis Screen");
                       },
-                      child: const Text('Back '),
+                      child: const Text('Back ',style:TextStyle(fontSize:20)),
                     ),
                   ),
                 ),
@@ -158,8 +160,8 @@ class _Tray3AnalysisState extends State<Tray3Analysis> {
               child:  const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.analytics_outlined,color: Colors.white,),
-                  Text('Tray 3 Analysis in progress please wait ',style:TextStyle(color:Colors.white),),
+                  Icon(Icons.analytics_outlined,color: Colors.white,size: iconbelowscreen,),
+                  Text('Tray 3 Analysis in progress please wait ',style:TextStyle(color:Colors.white,fontSize: textbelowscreen),),
                 ],
               ),
             ),

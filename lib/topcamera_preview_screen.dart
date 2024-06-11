@@ -33,8 +33,8 @@ class _TopCameraviewState extends State<TopCameraview> {
               child:const Column(
                 mainAxisAlignment:MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.camera_alt,color:Colors.white,size:80,),
-                  Text("Top CAM image",style:TextStyle(color:Colors.white,fontSize:20,fontWeight:FontWeight.w500),),
+                  Icon(Icons.camera_alt,color:Colors.white,size:200,),
+                  Text("Top CAM image",style:TextStyle(color:Colors.white,fontSize:30,fontWeight:FontWeight.w500),),
                 ],
               ),
             ),
@@ -48,9 +48,9 @@ class _TopCameraviewState extends State<TopCameraview> {
               mainAxisAlignment:MainAxisAlignment.end,
               children: [
 
-                SizedBox(width:100,child: ElevatedButton(onPressed: (){
+                SizedBox(width:120,height:50,child: ElevatedButton(onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const Screen1()));
-                }, child: const Text("Back")))
+                }, child: const Text("Back",style:TextStyle(color:Colors.white,fontSize: 20))))
               ],
             ),
             const Spacer(),

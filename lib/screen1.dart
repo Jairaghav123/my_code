@@ -6,6 +6,7 @@ import 'package:flutter_ics_homescreen/startAnalysisscreen.dart';
 import 'package:flutter_ics_homescreen/topcamera_preview_screen.dart';
 import 'package:intl/intl.dart';
 
+import 'Data/variables/variables.dart';
 import 'datalogscreen.dart';
 
 
@@ -48,12 +49,12 @@ class _Screen1State extends State<Screen1> {
                       Row(
                         children: [
                           const Icon(Icons.calendar_month_rounded,color:Colors.white),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: 14,color:Colors.white),),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white),),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: 16,color:Colors.white)),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white)),
                         ],
                       ),
                     ],
@@ -64,19 +65,22 @@ class _Screen1State extends State<Screen1> {
             ),
            const  Spacer(),
             const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                screen1button(screenheight: screenHeight*0.12, screenwidth: screenWidth*0.12, myicon: Icons.analytics_outlined, mytext: 'Start Analysis', iconsize: 30, myobject: "Start Analysis Screen",),
-                screen1button(screenheight: screenHeight*0.12, screenwidth: screenWidth*0.12, myicon: Icons.camera, mytext: 'Top Camera View', iconsize: 30, myobject: "Top CAM preview Screen",),
-                screen1button(screenheight: screenHeight*0.12, screenwidth: screenWidth*0.12, myicon: Icons.camera_alt, mytext: 'Bottom Camera View', iconsize: 30, myobject: "Bottom CAM preview Screen",),
+                screen1button(screenheight: screenHeight*0.20, screenwidth: screenWidth*0.20, myicon: Icons.analytics_outlined, mytext: 'Start Analysis', iconsize: screen1iconsize, myobject: "Start Analysis Screen",),
+                SizedBox(width: screenWidth*0.05,) ,
+                screen1button(screenheight: screenHeight*0.20, screenwidth: screenWidth*0.20, myicon: Icons.camera, mytext: 'Top Camera View', iconsize: screen1iconsize, myobject: "Top CAM preview Screen",),
+                SizedBox(width: screenWidth*0.05,) ,
+                screen1button(screenheight: screenHeight*0.20, screenwidth: screenWidth*0.20, myicon: Icons.camera_alt, mytext: 'Bottom Camera View', iconsize: screen1iconsize, myobject: "Bottom CAM preview Screen",),
               ],
             ),
             const SizedBox(height: 40),
             const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                screen1button(screenheight: screenHeight*0.12, screenwidth: screenWidth*0.12, myicon: Icons.dataset, mytext: 'Data log', iconsize: 30, myobject: "Data Log Screen",),
-                screen1button(screenheight: screenHeight*0.12, screenwidth: screenWidth*0.12, myicon: Icons.settings, mytext: 'Settings', iconsize: 30, myobject: "SettingsScreen",),
+                screen1button(screenheight: screenHeight*0.20, screenwidth: screenWidth*0.20, myicon: Icons.dataset, mytext: 'Data log', iconsize: screen1iconsize, myobject: "Data Log Screen",),
+                SizedBox(width: screenWidth*0.05,) ,
+                screen1button(screenheight: screenHeight*0.20, screenwidth: screenWidth*0.20, myicon: Icons.settings, mytext: 'Settings', iconsize: screen1iconsize, myobject: "SettingsScreen",),
               ],
             ),
             const SizedBox(height: 80),
@@ -93,7 +97,7 @@ class _Screen1State extends State<Screen1> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                  // Icon(Icons.pro,color: Colors.white,),
-                  Text('Progress info bar ',style:TextStyle(color:Colors.white,fontSize: 16),),
+                  Text('Progress info bar ',style:TextStyle(color:Colors.white,fontSize: textbelowscreen),),
                 ],
               ),
             ),
@@ -146,7 +150,8 @@ class _screen1buttonState extends State<screen1button> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(widget.myicon,size:widget.iconsize,),
-             Text(widget.mytext),
+             const SizedBox(height: 10),
+             Text(widget.mytext,style:const TextStyle(fontSize: 20),),
           ],
         ),
       ),

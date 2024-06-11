@@ -20,7 +20,7 @@ class DataLogScreenWidget extends StatelessWidget {
 
       Row(
         children: [
-          Container(alignment:Alignment.center,color:Colors.blue ,width:screenwidth*0.25,height:screenheight*0.05,child: Text(innertext),),
+          Container(alignment:Alignment.center,color:Colors.blue ,width:screenwidth*0.25,height:screenheight*0.05,child: Text(innertext,style: const TextStyle(color:Colors.white,fontSize: 20),),),
 
         ],
       ),

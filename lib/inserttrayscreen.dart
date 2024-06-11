@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ics_homescreen/Data/variables/variables.dart';
 import 'package:flutter_ics_homescreen/screensize.dart';
 import 'package:flutter_ics_homescreen/startAnalysisscreen.dart';
 import 'package:flutter_ics_homescreen/tray1analysisscreen.dart';
@@ -44,12 +45,12 @@ class _InsertTrayscreenState extends State<InsertTrayscreen> {
                       Row(
                         children: [
                           const Icon(Icons.calendar_month_rounded,color:Colors.white),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: 14,color:Colors.white),),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white),),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: 16,color:Colors.white)),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white)),
                         ],
                       ),
                     ],
@@ -72,8 +73,9 @@ class _InsertTrayscreenState extends State<InsertTrayscreen> {
                 child: const Column(
                   mainAxisAlignment:MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.input_sharp,size:40,),
-                    Text('Insert Tray to begin'),
+                    Icon(Icons.input_sharp,size:insertrayiconsize,),
+                    SizedBox(height: 10),
+                    Text('Insert Tray to begin',style: TextStyle(fontSize:20),),
                   ],
                 ),
               ),
@@ -96,7 +98,7 @@ class _InsertTrayscreenState extends State<InsertTrayscreen> {
                         // Action for top camera view button
                         Navigator.pushNamed(context, "Tray 1 Analysis Screen");
                       },
-                      child: const Text('Next '),
+                      child: const Text('Next ',style: TextStyle(fontSize:20),),
                     ),
                   ),
                 ),
@@ -114,7 +116,7 @@ class _InsertTrayscreenState extends State<InsertTrayscreen> {
                         // Action for top camera view button
                         Navigator.pushNamed(context, "Start Analysis Screen");
                       },
-                      child: const Text('Back '),
+                      child: const Text('Back ',style: TextStyle(fontSize: 20),),
                     ),
                   ),
                 ),
@@ -131,8 +133,8 @@ class _InsertTrayscreenState extends State<InsertTrayscreen> {
               child:  Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.analytics_outlined,color: Colors.white,),
-                  Text('Insert filled Tray to start analysis .... ',style:TextStyle(color:Colors.white),),
+                  Icon(Icons.analytics_outlined,color: Colors.white,size: 50,),
+                  Text('Insert filled Tray to start analysis .... ',style:TextStyle(color:Colors.white,fontSize:textbelowscreen),),
                 ],
               ),
             ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ics_homescreen/Data/variables/variables.dart';
 import 'package:flutter_ics_homescreen/resultscreenwidget.dart';
 import 'package:flutter_ics_homescreen/screen1.dart';
+import 'package:flutter_ics_homescreen/screensize.dart';
 import 'package:intl/intl.dart';
 
 
@@ -18,15 +20,12 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
   @override
 
   Widget build(BuildContext context) {
-    final screenheight=MediaQuery.of(context).size.height ;
-    final screenwidth=MediaQuery.of(context).size.width ;
-    print("$screenwidth");
-    print("$screenheight");
+
     return Scaffold(
 
       body: Container(
-        height: screenheight,
-        width: screenwidth,
+        height: screenHeight,
+        width: screenWidth,
         color:Colors.blueGrey,
         child: Column(
           children: [
@@ -35,26 +34,26 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
-                    width: screenwidth*0.15,
+                    width: screenWidth*0.15,
                     color:Colors.white,
                     child: Image.asset('asset/mylogo.png')), // Replace 'assets/logo.png' with your logo
                 Container(
                     alignment: Alignment.center,
-                    width: screenwidth*0.60 ,child: const Text("Knemetic solutions",style: TextStyle(fontSize:40,fontWeight:FontWeight.normal,color:Colors.white),)),
+                    width: screenWidth*0.60 ,child: const Text("Knemetic solutions",style: TextStyle(fontSize:40,fontWeight:FontWeight.normal,color:Colors.white),)),
                 Container(
                   color:Colors.blue,
-                  width: screenwidth*0.15,
+                  width: screenWidth*0.15,
                   child: Column(
                     children: [
                       Row(
                         children: [
                           const Icon(Icons.calendar_month_rounded,color:Colors.white),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: 14,color:Colors.white),),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white),),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: 16,color:Colors.white)),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white)),
                         ],
                       ),
                     ],
@@ -69,48 +68,48 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
               children: [
                 const SizedBox(width:30,),
                 Container(alignment:Alignment.center,
-                  width:screenwidth*0.30,height:screenheight*.05,color:Colors.blue,child:const Text("Agent Details"),
+                  width:screenWidth*0.30,height:screenHeight*.05,color:Colors.blue,child:const Text("NULL",style: TextStyle(fontSize: 20,color:Colors.white),),
                 ),
-                SizedBox(width:screenwidth*0.05,),
+                const SizedBox(width:screenWidth*0.05,),
                 Container(alignment:Alignment.center,
-                  width:screenwidth*0.30,height:screenheight*.05,color:Colors.blue,child:const Text("Analysis Data"),
+                  width:screenWidth*0.30,height:screenHeight*.05,color:Colors.blue,child:const Text("NULL",style: TextStyle(fontSize: 20,color:Colors.white),),
                 )
               ],
             ),
             const SizedBox(height:40,),
             Row(
               children: [
-                Column(children: [
-                  ResultScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "MC", percentagetext: '....',),
-                  const SizedBox(height: 10,),
-                  ResultScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "PB", percentagetext: '....',),
-                  const SizedBox(height: 10,),
-                  ResultScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "AAA", percentagetext: '....',),
-                  const SizedBox(height: 10,),
-                  ResultScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "AA", percentagetext: '....',),
-                  const SizedBox(height: 10,),
-                  ResultScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "A", percentagetext: '....',),
-                  const SizedBox(height: 10,),
-                  ResultScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "B", percentagetext: '....',),
-                  const SizedBox(height: 10,),
+                const Column(children: [
+                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "MC", percentagetext: '20 ',),
+                  SizedBox(height: 10,),
+                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "PB", percentagetext: '20 ',),
+                  SizedBox(height: 10,),
+                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "AAA", percentagetext: '20 ',),
+                  SizedBox(height: 10,),
+                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "AA", percentagetext: '34 ',),
+                  SizedBox(height: 10,),
+                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "A", percentagetext: '67 ',),
+                  SizedBox(height: 10,),
+                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "B", percentagetext: '67',),
+                  SizedBox(height: 10,),
 
                 ],),
 
 
-                SizedBox(width:screenwidth*0.20,),
-                Column(children: [
-                  ResultScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "C", percentagetext: '....',),
-                  const SizedBox(height: 10,),
-                  ResultScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "BB", percentagetext: '....',),
-                  const SizedBox(height: 10,),
-                  ResultScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "BL", percentagetext: '....',),
-                  const SizedBox(height: 10,),
-                  ResultScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "BERRY", percentagetext: '....',),
-                  const SizedBox(height: 10,),
-                  ResultScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "BITS", percentagetext: '....',),
-                  const SizedBox(height: 10,),
-                  ResultScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "HUSK/Stone", percentagetext: '....',),
-                  const SizedBox(height: 10,),
+                const SizedBox(width:screenWidth*0.20,),
+                const Column(children: [
+                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "C", percentagetext: '34 ',),
+                  SizedBox(height: 10,),
+                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "BB", percentagetext: '56 ',),
+                  SizedBox(height: 10,),
+                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "BL", percentagetext: '78 ',),
+                  SizedBox(height: 10,),
+                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "BERRY", percentagetext: '56 ',),
+                  SizedBox(height: 10,),
+                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "BITS", percentagetext: '78 ',),
+                  SizedBox(height: 10,),
+                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "HUSK/Stone", percentagetext: '34 ',),
+                  SizedBox(height: 10,),
 
 
 
@@ -122,8 +121,8 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
                 Column(children: [
                   Container(
 
-                    height:screenheight*.06,
-                    width: screenwidth*0.10,
+                    height:screenHeight*.06,
+                    width: screenWidth*0.10,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20), // Adjust the value as needed
                     ),
@@ -131,7 +130,7 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
                       onPressed: () {
                         // Action for top camera view button
                       },
-                      child: const Text('Save'),
+                      child: const Text('Save',style: TextStyle(fontSize: 20,color:Colors.white),),
                     ),
                   ),
 
@@ -142,8 +141,8 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
 
 
                   Container(
-                    height:screenheight*.06,
-                    width: screenwidth*0.10,
+                    height:screenHeight*.06,
+                    width: screenWidth*0.10,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20), // Adjust the value as needed
                     ),
@@ -151,7 +150,7 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
                       onPressed: () {
                         // Action for top camera view button
                       },
-                      child: const Text('Print '),
+                      child: const Text('Print ',style: TextStyle(fontSize: 20,color:Colors.white),),
                     ),
                   ),
 
@@ -159,8 +158,8 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
 
                   const SizedBox(height: 40,),
                   Container(
-                    height:screenheight*.06,
-                    width: screenwidth*0.10,
+                    height:screenHeight*.06,
+                    width: screenWidth*0.10,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20), // Adjust the value as needed
                     ),
@@ -169,7 +168,7 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
                         // Action for top camera view button
                         Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const Screen1()));
                       },
-                      child: const Text('Home '),
+                      child: const Text('Home ',style: TextStyle(fontSize: 20,color:Colors.white),),
                     ),
                   ),
 
@@ -183,16 +182,16 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
             Container(
 
               //color:Colors.wh,
-              decoration:BoxDecoration(
-                  border: Border.all(color:Colors.blue,width: 2)
-              ),
-              width: screenwidth*.8,
-              height: screenheight*0.1,
+              // decoration:BoxDecoration(
+              //     border: Border.all(c,width: 2)
+              // ),
+              width: screenWidth*.8,
+              height: screenHeight*0.1,
               child:  const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.dataset,color: Colors.white,),
-                  Text('Stored data ',style:TextStyle(color:Colors.white),),
+                  Icon(Icons.dataset,color: Colors.white,size:iconbelowscreen),
+                  Text('Stored data ',style:TextStyle(color:Colors.white,fontSize:20),),
                 ],
               ),
             ),

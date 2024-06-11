@@ -5,6 +5,7 @@ import 'package:flutter_ics_homescreen/screen4.dart';
 import 'package:flutter_ics_homescreen/screensize.dart';
 import 'package:intl/intl.dart';
 
+import 'Data/variables/variables.dart';
 import 'defectselectionscreen.dart';
 
 
@@ -45,12 +46,12 @@ class _Screen2State extends State<Screen2> {
                       Row(
                         children: [
                           const Icon(Icons.calendar_month_rounded,color:Colors.white),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: 14,color:Colors.white),),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white),),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: 16,color:Colors.white)),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white)),
                         ],
                       ),
                     ],
@@ -72,14 +73,14 @@ class _Screen2State extends State<Screen2> {
                   child: ElevatedButton(
                     onPressed: () {
 
-                      Navigator.pushNamed(context, "Color and light settings-Top Screen");
+                      Navigator.pushNamed(context, "Color and light settings-Top Screen",);
                       // Action for top camera view button
                     },
                     child: const Column(
                       mainAxisAlignment:MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.camera,size:40,),
-                        Text('Top camera and light settings'),
+                        Icon(Icons.camera,size:50,),
+                        Text('Top camera and light settings',style: TextStyle(fontSize:20,color:Colors.white)),
                       ],
                     ),
                   ),
@@ -95,13 +96,13 @@ class _Screen2State extends State<Screen2> {
                   child: ElevatedButton(
                     onPressed: () {
                       // Action for top camera view button
-                      Navigator.pushNamed(context,  "Color and light settings-Bottom Screen");
+                      Navigator.pushNamed(context,  "Color and light settings-Bottom Screen",);
                     },
                     child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.camera_alt,size:40,),
-                        Text('Bottom camera and light settings'),
+                        Icon(Icons.camera_alt,size:50,),
+                        Text('Bottom camera and light settings',style: TextStyle(fontSize:20,color:Colors.white)),
                       ],
                     ),
                   ),
@@ -118,7 +119,7 @@ class _Screen2State extends State<Screen2> {
                       // Action for top camera view button
                       Navigator.pushNamed(context, "Defect Selection Screen");
                     },
-                    child: const Text('Defect selction setting'),
+                    child: const Text('Defect selction setting',style: TextStyle(fontSize:20,color:Colors.white)),
                   ),
                 ),
 
@@ -130,7 +131,7 @@ class _Screen2State extends State<Screen2> {
               children: [
                 Container(
                   height:screenHeight*.1,
-                  width: screenWidth*0.15,
+                  width: screenWidth*0.10,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20), // Adjust the value as needed
                   ),
@@ -141,7 +142,7 @@ class _Screen2State extends State<Screen2> {
                         // Action for top camera view button
                         Navigator.pushNamed(context, "HomeScreen");
                       },
-                      child: const Text('Back '),
+                      child: const Text('Back ',style: TextStyle(fontSize:20,color:Colors.white),),
                     ),
                   ),
                 ),
@@ -156,8 +157,8 @@ class _Screen2State extends State<Screen2> {
               child:  Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.settings,size:35,color:Colors.blue,),
-                  Text(' Settings ',style: TextStyle(fontSize: 30,color:Colors.white),),
+                  Icon(Icons.settings,size:50,color:Colors.blue,),
+                  Text(' Settings ',style: TextStyle(fontSize: textbelowscreen,color:Colors.white),),
                 ],
               ),
             ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ics_homescreen/Data/variables/variables.dart';
 import 'package:flutter_ics_homescreen/screen2.dart';
+import 'package:flutter_ics_homescreen/screensize.dart';
 
 
 import 'package:flutter_ics_homescreen/sliderscreen3.dart';
@@ -20,8 +22,7 @@ class _defectselectionState extends State<defectselection> {
   @override
 
   Widget build(BuildContext context) {
-    final screenheight=MediaQuery.of(context).size.height ;
-    final screenwidth=MediaQuery.of(context).size.width ;
+
 
     return Scaffold(
 
@@ -34,27 +35,27 @@ class _defectselectionState extends State<defectselection> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
-                    width: screenwidth*0.15,
+                    width: screenWidth*0.15,
                     color:Colors.white,
                     child: Image.asset('asset/mylogo.png')), // Replace 'assets/logo.png' with your logo
                 //const SizedBox(width:250),
                 Container(
                     alignment: Alignment.center,
-                    width: screenwidth*0.60 ,child: const Text("Knemetic solutions",style: TextStyle(fontSize:40,fontWeight:FontWeight.normal,color:Colors.white),)),
+                    width: screenWidth*0.60 ,child: const Text("Knemetic solutions",style: TextStyle(fontSize:40,fontWeight:FontWeight.normal,color:Colors.white),)),
                 Container(
                   color:Colors.blue,
-                  width: screenwidth*0.15,
+                  width: screenWidth*0.15,
                   child: Column(
                     children: [
                       Row(
                         children: [
                           const Icon(Icons.calendar_month_rounded),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: 14,color: Colors.white)),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color: Colors.white)),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: 16,color:Colors.white)),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white)),
                         ],
                       ),
                     ],
@@ -73,34 +74,34 @@ class _defectselectionState extends State<defectselection> {
                  Column(
 
                    children: [
-                     defectselectioncolumn(screenwidth: screenwidth, screenheight: screenheight, innertext: 'MC', firstvalue: true,),
+                     defectselectioncolumn(screenwidth: screenWidth, screenheight: screenHeight, innertext: 'MC', firstvalue: true,),
                      const SizedBox(height: 20,),
-                     defectselectioncolumn(screenwidth: screenwidth, screenheight: screenheight, innertext: 'PB',firstvalue: true,),
+                     defectselectioncolumn(screenwidth: screenWidth, screenheight: screenHeight, innertext: 'PB',firstvalue: true,),
                      const SizedBox(height: 20,),
-                     defectselectioncolumn(screenwidth: screenwidth, screenheight: screenheight, innertext: 'AAA',firstvalue: true,),
+                     defectselectioncolumn(screenwidth: screenWidth, screenheight: screenHeight, innertext: 'AAA',firstvalue: true,),
                      const SizedBox(height: 20,),
-                     defectselectioncolumn(screenwidth: screenwidth, screenheight: screenheight, innertext: 'AA',firstvalue: true,),
+                     defectselectioncolumn(screenwidth: screenWidth, screenheight: screenHeight, innertext: 'AA',firstvalue: true,),
                      const SizedBox(height: 20,),
-                     defectselectioncolumn(screenwidth: screenwidth, screenheight: screenheight, innertext: 'A',firstvalue: true,),
+                     defectselectioncolumn(screenwidth: screenWidth, screenheight: screenHeight, innertext: 'A',firstvalue: true,),
                      const SizedBox(height: 20,),
-                     defectselectioncolumn(screenwidth: screenwidth, screenheight: screenheight, innertext: 'B',firstvalue: true,),
+                     defectselectioncolumn(screenwidth: screenWidth, screenheight: screenHeight, innertext: 'B',firstvalue: true,),
                    ],
                  ),
 
-                 SizedBox(width:screenwidth*0.35,),
+                 const SizedBox(width:screenWidth*0.35,),
                  Column(
                    children: [
-                     defectselectioncolumn(screenwidth: screenwidth, screenheight: screenheight, innertext: 'C',firstvalue: true,),
+                     defectselectioncolumn(screenwidth: screenWidth, screenheight: screenHeight, innertext: 'C',firstvalue: true,),
                      const SizedBox(height: 20,),
-                     defectselectioncolumn(screenwidth: screenwidth, screenheight: screenheight, innertext: 'BB',firstvalue: true,),
+                     defectselectioncolumn(screenwidth: screenWidth, screenheight: screenHeight, innertext: 'BB',firstvalue: true,),
                      const SizedBox(height: 20,),
-                     defectselectioncolumn(screenwidth: screenwidth, screenheight: screenheight, innertext: 'BL',firstvalue: true,),
+                     defectselectioncolumn(screenwidth: screenWidth, screenheight: screenHeight, innertext: 'BL',firstvalue: true,),
                      const SizedBox(height: 20,),
-                     defectselectioncolumn(screenwidth: screenwidth, screenheight: screenheight, innertext: 'BERRY',firstvalue: true,),
+                     defectselectioncolumn(screenwidth: screenWidth, screenheight: screenHeight, innertext: 'BERRY',firstvalue: true,),
                      const SizedBox(height: 20,),
-                     defectselectioncolumn(screenwidth: screenwidth, screenheight: screenheight, innertext: 'BITS',firstvalue: true,),
+                     defectselectioncolumn(screenwidth: screenWidth, screenheight: screenHeight, innertext: 'BITS',firstvalue: true,),
                      const SizedBox(height: 20,),
-                     defectselectioncolumn(screenwidth: screenwidth, screenheight: screenheight, innertext: 'HUSK/Stone',firstvalue: true,),
+                     defectselectioncolumn(screenwidth: screenWidth, screenheight: screenHeight, innertext: 'HUSK/Stone',firstvalue: true,),
                    ],
                  )
                ],
@@ -110,25 +111,25 @@ class _defectselectionState extends State<defectselection> {
               mainAxisAlignment:MainAxisAlignment.end,
               children: [
 
-                SizedBox(width:100,child: ElevatedButton(onPressed: (){
+                SizedBox(width:120,height:60,child: ElevatedButton(onPressed: (){
 
                   Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const Screen2()));
 
-                }, child: const Text("Back")))
+                }, child: const Text("Back",style: TextStyle(fontSize:20,color:Colors.white),)))
               ],
             ),
             const Spacer(),
-            Row(
+            const Row(
               children: [
-                SizedBox(width:screenwidth*0.10,height: screenheight*0.10,),
+                SizedBox(width:screenWidth*0.10,height: screenHeight*0.10,),
                 SizedBox(
-                  width: screenwidth*.8,
-                  height: screenheight*0.06,
-                  child:  const Row(
+                  width: screenWidth*.8,
+                  height: screenHeight*0.06,
+                  child:  Row(
                     mainAxisAlignment:MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.settings,size:35,color:Colors.blue,),
-                      Text(' Settings ',style: TextStyle(fontSize: 30,color:Colors.white),),
+                      Icon(Icons.settings,size:50,color:Colors.blue,),
+                      Text(' Settings ',style: TextStyle(fontSize: 25,color:Colors.white),),
                     ],
                   ),
                 ),

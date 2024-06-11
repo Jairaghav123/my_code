@@ -3,6 +3,8 @@ import 'package:flutter_ics_homescreen/screensize.dart';
 import 'package:flutter_ics_homescreen/tray3analysisscreen.dart';
 import 'package:intl/intl.dart';
 
+import 'Data/variables/variables.dart';
+
 
 class Tray2Analysis extends StatefulWidget {
   const Tray2Analysis({super.key});
@@ -43,12 +45,12 @@ class _Tray2AnalysisState extends State<Tray2Analysis> {
                       Row(
                         children: [
                           const Icon(Icons.calendar_month_rounded,color:Colors.white),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: 14,color:Colors.white),),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white),),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: 16,color:Colors.white)),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white)),
                         ],
                       ),
                     ],
@@ -75,8 +77,8 @@ class _Tray2AnalysisState extends State<Tray2Analysis> {
                   const Row(
                     mainAxisAlignment:MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('0%'),
-                      Text('100%'),
+                      Text('0%',style: TextStyle(fontSize:20,color: Colors.white)),
+                      Text('100%',style: TextStyle(fontSize:20,color: Colors.white)),
                     ],
                   ),
                 ],
@@ -99,7 +101,7 @@ class _Tray2AnalysisState extends State<Tray2Analysis> {
                       onPressed: () {
                         // Action for top camera view button
                       },
-                      child: const Text('Restart Tray 2'),
+                      child: const Text('Restart Tray 2',style: TextStyle(fontSize:20)),
                     ),
                   ),
                 ),
@@ -119,7 +121,7 @@ class _Tray2AnalysisState extends State<Tray2Analysis> {
                         // Action for top camera view button
                         Navigator.pushNamed(context,"Tray 3 Analysis Screen");
                       },
-                      child: const Text('Insert Tray3 Next '),
+                      child: const Text('Insert Tray3 Next ',style: TextStyle(fontSize:20)),
                     ),
                   ),
                 ),
@@ -139,7 +141,7 @@ class _Tray2AnalysisState extends State<Tray2Analysis> {
 
                         Navigator.pushNamed(context,"Tray 1 Analysis Screen" );
                       },
-                      child: const Text('Back '),
+                      child: const Text('Back ',style: TextStyle(fontSize:20)),
                     ),
                   ),
                 ),
@@ -160,8 +162,8 @@ class _Tray2AnalysisState extends State<Tray2Analysis> {
               child:  const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.analytics_outlined,color: Colors.white,),
-                  Text('Tray 2 Analysis in progress please wait ',style:TextStyle(color:Colors.white),),
+                  Icon(Icons.analytics_outlined,color: Colors.white,size: iconbelowscreen),
+                  Text('Tray 2 Analysis in progress please wait ',style:TextStyle(color:Colors.white,fontSize: textbelowscreen),),
                 ],
               ),
             ),

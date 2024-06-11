@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ics_homescreen/Data/variables/variables.dart';
 import 'package:flutter_ics_homescreen/screensize.dart';
 import 'package:flutter_ics_homescreen/tray2alaysisscreen.dart';
 import 'package:intl/intl.dart';
@@ -43,12 +44,12 @@ class _Tray1AnalysisState extends State<Tray1Analysis> {
                       Row(
                         children: [
                           const Icon(Icons.calendar_month_rounded,color:Colors.white),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: 14,color:Colors.white),),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white),),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: 16,color:Colors.white)),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white)),
                         ],
                       ),
                     ],
@@ -71,12 +72,12 @@ class _Tray1AnalysisState extends State<Tray1Analysis> {
                     color:Colors.blue,
                     borderRadius: BorderRadius.circular(10), // Adjust the value as needed
                   ),),
-                  SizedBox(height:10,),
+                  const SizedBox(height:10,),
                   const Row(
                     mainAxisAlignment:MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('0%'),
-                      Text('100%'),
+                      Text('0%',style: TextStyle(fontSize: 20,color: Colors.white),),
+                      Text('100%',style: TextStyle(fontSize: 20,color: Colors.white),),
                     ],
                   ),
                 ],
@@ -88,19 +89,16 @@ class _Tray1AnalysisState extends State<Tray1Analysis> {
               children: [
                 Container(
                   alignment: Alignment.center,
-                  height:screenHeight*.1,
+                  height:screenHeight*.25,
                   width: screenWidth*0.15,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20), // Adjust the value as needed
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Action for top camera view button
-                      },
-                      child: const Text('Restart Tray 1'),
-                    ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // Action for top camera view button
+                    },
+                    child: const Text('Restart Tray 1',style: TextStyle(fontSize:20),),
                   ),
                 ),
                 const SizedBox(width:10,height:50,),
@@ -119,7 +117,7 @@ class _Tray1AnalysisState extends State<Tray1Analysis> {
                         // Action for top camera view button
                         Navigator.pushNamed(context, "Tray 2 Analysis Screen" );
                       },
-                      child: const Text('Insert Tray2 Next '),
+                      child: const Text('Insert Tray2 Next ',style: TextStyle(fontSize:20)),
                     ),
                   ),
                 ),
@@ -139,7 +137,7 @@ class _Tray1AnalysisState extends State<Tray1Analysis> {
 
                         Navigator.pushNamed(context,"Insert Tray pop up Screen");
                       },
-                      child: const Text('Back '),
+                      child: const Text('Back ',style: TextStyle(fontSize:20)),
                     ),
                   ),
                 ),
@@ -154,8 +152,8 @@ class _Tray1AnalysisState extends State<Tray1Analysis> {
               child:  Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.analytics_outlined,color: Colors.white,),
-                  Text('Tray 1 Analysis in progress please wait ',style:TextStyle(color:Colors.white),),
+                  Icon(Icons.analytics_outlined,color: Colors.white,size: iconbelowscreen,),
+                  Text('Tray 1 Analysis in progress please wait ',style:TextStyle(color:Colors.white,fontSize: textbelowscreen),),
                 ],
               ),
             ),
