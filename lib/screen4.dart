@@ -129,7 +129,7 @@ class _Screen4State extends State<Screen4> {
                 SizedBox(height:screenHeight*0.07,width:130,child: ElevatedButton(onPressed: (){
 
                   Navigator.pushNamed(context, "SettingsScreen");
-                }, child: const Text("Back",style: TextStyle(fontSize: 20,color:Colors.white),))),
+                }, child: Text("Back",style: textStyleForAllText ()))),
 
 
               ],

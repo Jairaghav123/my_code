@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Data/variables/variables.dart';
+
 class color_setting_button extends StatefulWidget {
 
    color_setting_button({
@@ -35,7 +37,7 @@ class _color_setting_buttonState extends State<color_setting_button> {
           children: [
             Icon(widget.myicon,color:widget.iconcolors,size:110,),
             const SizedBox(height: 10,),
-            Text(widget.myText,style: const TextStyle(color:Colors.white,fontSize: 20),),
+            Text(widget.myText,style: textStyleForAllText ()),
           ],
         ),
       ),

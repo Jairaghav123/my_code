@@ -17,6 +17,7 @@ import 'package:flutter_ics_homescreen/tray3analysisscreen.dart';
 import 'package:flutter_ics_homescreen/viewdatalogscreen.dart';
 import 'package:window_manager/window_manager.dart';
 
+import 'Data/savedata.dart';
 import 'bootscreen.dart';
 import 'bottomcamera_preview_screen.dart';
 import 'datalogscreen.dart';
@@ -27,6 +28,7 @@ void main () async
 
   WidgetsFlutterBinding.ensureInitialized();
   await windowManager.ensureInitialized();
+
   if(Platform.isLinux || Platform.isWindows)
     {
 
@@ -42,8 +44,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return   MaterialApp(
       debugShowCheckedModeBanner:false,
+
       initialRoute: "/",
       routes: {
         "/" :  (context)=>const BootScreen(),
@@ -62,6 +66,7 @@ class MyApp extends StatelessWidget {
         "Results Screen" :  (context)=>const ResultScreen(),
         "Data Log Screen" :  (context)=>const DataLogScreen(),
         "View Data Log  Screen" :  (context)=>const ViewDataLogScreen(),
+        "testsaveddata" : (context)=>DataScreen()
 
       },
 

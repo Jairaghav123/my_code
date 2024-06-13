@@ -61,40 +61,59 @@ class _BootScreenState extends State<BootScreen> with SingleTickerProviderStateM
           child: Column(
             children: [
               //logo
-              const SizedBox(height:60),
-              Container(
-                height: screenHeight*1/2,
-                width: screenWidth*.5,
-                color:Colors.white,
-                child: Image.asset("asset/mylogo.png"),
+
+              Expanded(flex:4,
+                child: Padding(
+                  padding: const EdgeInsets.only(top:60.0),
+                  child: Container(
+                    height: screenHeight*1/2,
+                    width: screenWidth*.5,
+                    color:Colors.blue,
+                    child: Image.asset("asset/mylogo.png"),
+                  ),
+                ),
               ),
-              const SizedBox(height: 20,),
-              const SizedBox(
-                child: Text("Knemetic solutions",style: TextStyle(fontSize:30,fontWeight:FontWeight.normal,color:Colors.white),),
-              ),
-              const SizedBox(height: 15,),
-              const  SizedBox(
-                child: Text("Copyright © 2024 knemetic solutions. All rights reserved Version 1.0.0 "
-                    ,style: TextStyle(fontSize:20,fontWeight:FontWeight.normal,color:Colors.white),),
-              ),
+
+                const Expanded(flex:1,child: Column(
+                 children: [
+                   Padding(
+                     padding: EdgeInsets.all(8.0),
+                     child: Text("Knemetic solutions",style: TextStyle(fontSize:30,fontWeight:FontWeight.normal,color:Colors.white),),
+                   ),
+
+
+                   Padding(
+                     padding: EdgeInsets.all(8.0),
+                     child: Text("Copyright © 2024 knemetic solutions. All rights reserved Version 1.0.0 "
+                       ,style: TextStyle(fontSize:20,fontWeight:FontWeight.normal,color:Colors.white),),
+                   ),
+                 ],
+               )),
+
+
               //const SizedBox(height: 30,),
-              const Spacer(flex:1),
-                Container(
-                  alignment: Alignment.center,
 
-                 width: screenWidth*.8,
-                 height: screenHeight*0.1,
-                 child: AnimatedBuilder(
-                   animation: _animation,
-                   builder: (context, child) {
-                     return const Text("Booting ... Please wait ",style:TextStyle(fontSize:20,fontWeight:FontWeight.normal,color:Colors.white),) ;
+                Expanded(flex:1,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 20.0),
+                    child: Container(
+                      alignment: Alignment.center,
 
-                   },
+                     width: screenWidth*.8,
+                     height: screenHeight*0.05,
+                     child: AnimatedBuilder(
+                       animation: _animation,
+                       builder: (context, child) {
+                         return const Text("Booting ... Please wait ",style:TextStyle(fontSize:20,fontWeight:FontWeight.normal,color:Colors.white),) ;
+
+                       },
 
               ),
-                 ),
+                     ),
+                  ),
+                ),
 
-              const SizedBox(height: 20,)
+             const SizedBox(height: 20,)
 
             ],
           ),

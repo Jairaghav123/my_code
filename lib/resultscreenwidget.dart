@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ics_homescreen/screensize.dart';
+
+import 'Data/variables/variables.dart';
 class ResultScreenWidget extends StatelessWidget {
   const ResultScreenWidget({
     super.key,
-    required this.screenwidth,
-    required this.screenheight, required this.innertext, required this.percentagetext,
+   required this.innertext, required this.percentagetext, required double screenWidth, required double screenHeight,
   });
 
-  final double screenwidth;
-  final double screenheight;
-  final String innertext ;
+  // final double screenwidth;
+  // final double screenheight;
+   final String innertext ;
   final String percentagetext ;
 
   @override
@@ -20,8 +22,8 @@ class ResultScreenWidget extends StatelessWidget {
 
       Row(
         children: [
-          Container(alignment:Alignment.center,color:Colors.blue ,width:screenwidth*0.25,height:screenheight*0.05,child: Text(innertext,style:const TextStyle(fontSize:20,color:Colors.white)),),
-           Text("          $percentagetext%",style:const TextStyle(fontSize:20,color:Colors.white)),
+          Container(alignment:Alignment.center,color:Colors.blue ,width:screenWidth*0.25,height:screenHeight*0.05,child: Text(innertext,style:textStyleForAllText ()),),
+           Text("          $percentagetext",style:textStyleForAllText ()),
         ],
       ),
 

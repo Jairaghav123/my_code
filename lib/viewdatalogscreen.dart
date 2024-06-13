@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_ics_homescreen/Data/app_data.dart';
 import 'package:flutter_ics_homescreen/Data/variables/variables.dart';
 import 'package:flutter_ics_homescreen/resultscreenwidget.dart';
 import 'package:flutter_ics_homescreen/screen1.dart';
 import 'package:flutter_ics_homescreen/screensize.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class ViewDataLogScreen extends StatefulWidget {
@@ -17,10 +21,26 @@ class ViewDataLogScreen extends StatefulWidget {
 }
 
 class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
+  List<Map<String, String>> _dataList = [];
+
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _loadData();
+
+  }
+
+  void _loadData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> agentData = prefs.getStringList('agents') ?? [];
+    setState(() {
+      _dataList = agentData.map((data) => Map<String, String>.from(jsonDecode(data))).toList();
+    });
+  }
 
   Widget build(BuildContext context) {
-
+    bool isDataAvailable = _dataList.isNotEmpty;
     return Scaffold(
 
       body: Container(
@@ -48,12 +68,12 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
                       Row(
                         children: [
                           const Icon(Icons.calendar_month_rounded,color:Colors.white),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white),),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style:textStyleForAllText ()),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white)),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: textStyleForAllText ()),
                         ],
                       ),
                     ],
@@ -63,53 +83,67 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
               ],
             ),
             const SizedBox(height: 50),
+            if (isDataAvailable)
             Row(
 
               children: [
                 const SizedBox(width:30,),
                 Container(alignment:Alignment.center,
-                  width:screenWidth*0.30,height:screenHeight*.05,color:Colors.blue,child:const Text("NULL",style: TextStyle(fontSize: 20,color:Colors.white),),
+                  width:screenWidth*0.30,height:screenHeight*.05,color:Colors.blue,child: Text( selectedAgenttoview?['name'] ?? "null",style:textStyleForAllText ()),
                 ),
                 const SizedBox(width:screenWidth*0.05,),
                 Container(alignment:Alignment.center,
-                  width:screenWidth*0.30,height:screenHeight*.05,color:Colors.blue,child:const Text("NULL",style: TextStyle(fontSize: 20,color:Colors.white),),
+                  width:screenWidth*0.30,height:screenHeight*.05,color:Colors.blue,child: Text(selectedAgenttoview?['AnalysisDate'] ?? "null",style: textStyleForAllText ()),
                 )
               ],
-            ),
+            )
+
+           else
+           Container(
+           alignment: Alignment.center,
+           width: screenWidth,
+           height: screenHeight * .05,
+           color: Colors.blue,
+             child: Text(
+                 'No data available',
+            style: textStyleForAllText(),
+                                     ),
+                ),
             const SizedBox(height:40,),
+            if (isDataAvailable)
             Row(
               children: [
-                const Column(children: [
-                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "MC", percentagetext: '20 ',),
-                  SizedBox(height: 10,),
-                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "PB", percentagetext: '20 ',),
-                  SizedBox(height: 10,),
-                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "AAA", percentagetext: '20 ',),
-                  SizedBox(height: 10,),
-                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "AA", percentagetext: '34 ',),
-                  SizedBox(height: 10,),
-                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "A", percentagetext: '67 ',),
-                  SizedBox(height: 10,),
-                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "B", percentagetext: '67',),
-                  SizedBox(height: 10,),
+                  Column(children: [
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "MC", percentagetext: selectedAgenttoview?['MC'] ?? "null"),
+                  const SizedBox(height: 10,),
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "PB", percentagetext: selectedAgenttoview?['PB'] ?? "null"),
+                  const SizedBox(height: 10,),
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "AAA", percentagetext: selectedAgenttoview?['AAA'] ?? "null"),
+                  const SizedBox(height: 10,),
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "AA", percentagetext: selectedAgenttoview?['AA'] ?? "null"),
+                  const SizedBox(height: 10,),
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "A", percentagetext: selectedAgenttoview?['A'] ?? "null"),
+                  const SizedBox(height: 10,),
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "B", percentagetext: selectedAgenttoview?['B'] ?? "null"),
+                  const SizedBox(height: 10,),
 
                 ],),
 
 
                 const SizedBox(width:screenWidth*0.20,),
-                const Column(children: [
-                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "C", percentagetext: '34 ',),
-                  SizedBox(height: 10,),
-                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "BB", percentagetext: '56 ',),
-                  SizedBox(height: 10,),
-                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "BL", percentagetext: '78 ',),
-                  SizedBox(height: 10,),
-                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "BERRY", percentagetext: '56 ',),
-                  SizedBox(height: 10,),
-                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "BITS", percentagetext: '78 ',),
-                  SizedBox(height: 10,),
-                  ResultScreenWidget(screenwidth: screenWidth, screenheight: screenHeight, innertext: "HUSK/Stone", percentagetext: '34 ',),
-                  SizedBox(height: 10,),
+                 Column(children: [
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "C", percentagetext: selectedAgenttoview?['C'] ?? "null"),
+                  const SizedBox(height: 10,),
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "BB", percentagetext:selectedAgenttoview?['BB'] ?? "null"),
+                  const SizedBox(height: 10,),
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "BL", percentagetext: selectedAgenttoview?['BL'] ?? "null"),
+                  const SizedBox(height: 10,),
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "BERRY", percentagetext: selectedAgenttoview?['BERRY'] ?? "null"),
+                  const SizedBox(height: 10,),
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "BITS", percentagetext: selectedAgenttoview?['BITS'] ?? "null"),
+                  const SizedBox(height: 10,),
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "HUSK/Stone", percentagetext:selectedAgenttoview?['HUSK/Stone'] ?? "null"),
+                  const SizedBox(height: 10,),
 
 
 
@@ -130,7 +164,7 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
                       onPressed: () {
                         // Action for top camera view button
                       },
-                      child: const Text('Save',style: TextStyle(fontSize: 20,color:Colors.white),),
+                      child: Text('Save',style:textStyleForAllText ()),
                     ),
                   ),
 
@@ -150,7 +184,8 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
                       onPressed: () {
                         // Action for top camera view button
                       },
-                      child: const Text('Print ',style: TextStyle(fontSize: 20,color:Colors.white),),
+                      child:  Text('Print ',style:textStyleForAllText ()
+                          ),
                     ),
                   ),
 
@@ -168,7 +203,8 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
                         // Action for top camera view button
                         Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const Screen1()));
                       },
-                      child: const Text('Home ',style: TextStyle(fontSize: 20,color:Colors.white),),
+                      child:  Text('Home ',style:textStyleForAllText ()
+                          ),
                     ),
                   ),
 
@@ -177,21 +213,28 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
 
                 ],),
               ],
-            ),
-            const Spacer(),
-            Container(
+            )
 
-              //color:Colors.wh,
-              // decoration:BoxDecoration(
-              //     border: Border.all(c,width: 2)
-              // ),
+            else
+            Container(
+            alignment: Alignment.center,
+            width: screenWidth,
+            height: screenHeight * .1,
+            child: Text(
+            'No data available to display results.',
+            style: textStyleForAllText(),
+             ),
+             ),
+            const Spacer(),
+            SizedBox(
+
               width: screenWidth*.8,
               height: screenHeight*0.1,
-              child:  const Row(
+              child:    Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.dataset,color: Colors.white,size:iconbelowscreen),
-                  Text('Stored data ',style:TextStyle(color:Colors.white,fontSize:20),),
+                  const Icon(Icons.dataset,color: Colors.white,size:iconbelowscreen),
+                  Text('Stored data ',style:textStyleBelowScreen ()),
                 ],
               ),
             ),
@@ -201,4 +244,6 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
       ),
     );
   }
+
+
 }

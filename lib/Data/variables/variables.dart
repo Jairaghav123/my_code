@@ -18,6 +18,24 @@ const double startAnalysisscreenfontsize=20 ;
 const double datetimefontsize=20;
 const double textbelowscreen=25 ;
 const double iconbelowscreen=50 ;
+Map<String, String>? selectedAgenttoview;
+
+
+TextStyle  textStyleBelowScreen ()
+{
+
+  return
+     const TextStyle(fontSize: 25,color:Colors.white);
+
+}
+
+TextStyle  textStyleForAllText ()
+{
+
+  return
+    const TextStyle(fontSize: 20,color:Colors.white);
+
+}
 
 
   String filename= 'null'  ;

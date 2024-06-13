@@ -45,12 +45,12 @@ class _InsertTrayscreenState extends State<InsertTrayscreen> {
                       Row(
                         children: [
                           const Icon(Icons.calendar_month_rounded,color:Colors.white),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white),),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: textStyleForAllText ()),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white)),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: textStyleForAllText ()),
                         ],
                       ),
                     ],
@@ -70,12 +70,12 @@ class _InsertTrayscreenState extends State<InsertTrayscreen> {
                 onPressed: () {
                   // Action for top camera view button
                 },
-                child: const Column(
+                child:  Column(
                   mainAxisAlignment:MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.input_sharp,size:insertrayiconsize,),
-                    SizedBox(height: 10),
-                    Text('Insert Tray to begin',style: TextStyle(fontSize:20),),
+                    const Icon(Icons.input_sharp,size:insertrayiconsize,),
+                    const SizedBox(height: 10),
+                    Text('Insert Tray to begin',style: textStyleForAllText ()),
                   ],
                 ),
               ),
@@ -98,7 +98,7 @@ class _InsertTrayscreenState extends State<InsertTrayscreen> {
                         // Action for top camera view button
                         Navigator.pushNamed(context, "Tray 1 Analysis Screen");
                       },
-                      child: const Text('Next ',style: TextStyle(fontSize:20),),
+                      child: Text('Next ',style: textStyleForAllText ()),
                     ),
                   ),
                 ),
@@ -116,7 +116,7 @@ class _InsertTrayscreenState extends State<InsertTrayscreen> {
                         // Action for top camera view button
                         Navigator.pushNamed(context, "Start Analysis Screen");
                       },
-                      child: const Text('Back ',style: TextStyle(fontSize: 20),),
+                      child: Text('Back ',style: textStyleForAllText ()),
                     ),
                   ),
                 ),
@@ -125,7 +125,7 @@ class _InsertTrayscreenState extends State<InsertTrayscreen> {
               ],
             ),
             const Spacer(),
-            const SizedBox(
+            SizedBox(
 
 
               width: screenWidth*.8,
@@ -133,8 +133,8 @@ class _InsertTrayscreenState extends State<InsertTrayscreen> {
               child:  Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.analytics_outlined,color: Colors.white,size: 50,),
-                  Text('Insert filled Tray to start analysis .... ',style:TextStyle(color:Colors.white,fontSize:textbelowscreen),),
+                  const Icon(Icons.analytics_outlined,color: Colors.white,size: 50,),
+                  Text('Insert filled Tray to start analysis .... ',style:textStyleBelowScreen ()),
                 ],
               ),
             ),

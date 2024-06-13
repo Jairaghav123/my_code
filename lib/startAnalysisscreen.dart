@@ -1,18 +1,15 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:flutter_ics_homescreen/analysisscreenwidgets.dart';
-import 'package:flutter_ics_homescreen/inserttrayscreen.dart';
-import 'package:flutter_ics_homescreen/screen1.dart';
 import 'package:flutter_ics_homescreen/screensize.dart';
 
-import 'package:flutter_ics_homescreen/sliderscreen3.dart';
 import 'package:intl/intl.dart';
 
 import 'Data/variables/variables.dart';
-import 'color_seeting_button_widget.dart';
-import 'defectselectionscreenwidget.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 
 class StartAnalysis extends StatefulWidget {
   const StartAnalysis({super.key});
@@ -22,6 +19,7 @@ class StartAnalysis extends StatefulWidget {
 }
 
 class _StartAnalysisState extends State<StartAnalysis> {
+
   @override
 
   Widget build(BuildContext context) {
@@ -53,12 +51,12 @@ class _StartAnalysisState extends State<StartAnalysis> {
                       Row(
                         children: [
                           const Icon(Icons.calendar_month_rounded),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: 14,color:Colors.white)),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: textStyleForAllText ()),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: 16,color:Colors.white),),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: textStyleForAllText ()),
                         ],
                       ),
                     ],
@@ -112,12 +110,14 @@ class _StartAnalysisState extends State<StartAnalysis> {
             Row(
               mainAxisAlignment:MainAxisAlignment.spaceAround,
               children: [
-                SizedBox(width:140,height:50,child: ElevatedButton(onPressed: (){
+                SizedBox(width:140,height:50,child: ElevatedButton(onPressed: () async{
 
-
+                  _saveData();
                      setState(() {
 
-                         _dialogBuilder(context);
+
+
+                       //  _dialogBuilder(context);
 
                      });
 
@@ -125,19 +125,19 @@ class _StartAnalysisState extends State<StartAnalysis> {
 
                     //Data will be save to file
 
-                }, child: const Text("Save",style: TextStyle(fontSize: 20),))),
+                }, child: Text("Save",style:textStyleForAllText ()))),
 
                 SizedBox(width:140,height:50,child:
                 ElevatedButton(onPressed: ()
 
                 {
                  Navigator.pushNamed(context, "Insert Tray pop up Screen");
-                }, child: const Text("Next",style: TextStyle(fontSize: 20),))),
+                }, child: Text("Next",style: textStyleForAllText ()))),
 
 
                 SizedBox(width:140,height:50,child: ElevatedButton(onPressed: (){
                   Navigator.pushNamed(context, "HomeScreen");
-                }, child: const Text("Back",style: TextStyle(fontSize: 20),)))
+                }, child: Text("Back",style: textStyleForAllText ())))
               ],
             ),
             const Spacer(),
@@ -146,7 +146,7 @@ class _StartAnalysisState extends State<StartAnalysis> {
               alignment: Alignment.center,
               width: screenWidth*.8,
               height: screenHeight*0.06,
-              child:  const Text('Agent and Material Data ',style: TextStyle(fontSize:textbelowscreen,fontWeight:FontWeight.normal,color:Colors.white),),
+              child:  Text('Agent and Material Data ',style:textStyleBelowScreen ()),
             ),
             const SizedBox(height: 20),
           ],
@@ -175,6 +175,43 @@ class _StartAnalysisState extends State<StartAnalysis> {
       },
     );
   }
+
+
+  Future<void> _saveData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> agentData = prefs.getStringList('agents') ?? [];
+
+    Map<String, String> newAgent = {
+      'name': agentNameController.text,
+      'address': agentAddressController.text,
+      'lorryNumber': lorryNumberController.text,
+      'noOfBags': noofBagsController.text,
+      'lotWeight': lotWeightController.text,
+      'typeAndGrade': typeAndGradeController.text,
+      'analysisSampleWeight': analysisSampleWeightController.text,
+      'analysisSampleWeight2': analysisSampleWeight2Controller.text,
+      'lorrySampleWeight': lorrySampleWeightController.text,
+      'moistureLevel': moistureLevelController.text,
+      'AnalysisDate':DateTime.now().toString(),
+      'MC':"20 %",
+      'PB':"34 %",
+      'AAA':"21 %",
+      'AA':"49 %",
+      'A':"16 %",
+      'B':"78 %",
+      'C':"67 %",
+      'BB':"12 %",
+      'BL':"19 %",
+      'BERRY':"67 %",
+      'BITS':"56 %",
+      'HUSK/Stone':"34 %",
+
+    };
+
+    agentData.add(jsonEncode(newAgent));
+    await prefs.setStringList('agents', agentData);
+  }
+
   Future<void> convertToPdf() async {
 
     final pdf = pw.Document();
@@ -202,7 +239,7 @@ class _StartAnalysisState extends State<StartAnalysis> {
      final file = File("AllReports/${fileNameController.text}");
     await file.writeAsBytes(await pdf.save());
 
-    agentNameController.clear();
+    //agentNameController.clear();
     agentAddressController.clear();
     lorryNumberController.clear();
     noofBagsController.clear();

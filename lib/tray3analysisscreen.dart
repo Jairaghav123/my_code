@@ -43,12 +43,12 @@ class _Tray3AnalysisState extends State<Tray3Analysis> {
                       Row(
                         children: [
                           const Icon(Icons.calendar_month_rounded,color:Colors.white),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: 14,color:Colors.white),),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: textStyleForAllText ()),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: 16,color:Colors.white)),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: textStyleForAllText ()),
                         ],
                       ),
                     ],
@@ -72,11 +72,11 @@ class _Tray3AnalysisState extends State<Tray3Analysis> {
                     borderRadius: BorderRadius.circular(10), // Adjust the value as needed
                   ),),
                   const SizedBox(height:10,),
-                  const Row(
+                   Row(
                     mainAxisAlignment:MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('0%',style: TextStyle(fontSize:20,color: Colors.white),),
-                      Text('100%',style:TextStyle(fontSize: 20,color: Colors.white),),
+                      Text('0%',style:textStyleForAllText ()),
+                      Text('100%',style:textStyleForAllText ()),
                     ],
                   ),
                 ],
@@ -99,7 +99,7 @@ class _Tray3AnalysisState extends State<Tray3Analysis> {
                       onPressed: () {
                         // Action for top camera view button
                       },
-                      child: const Text('Restart Tray 3',style: TextStyle(fontSize:20),),
+                      child:  Text('Restart Tray 3',style: textStyleForAllText ()),
                     ),
                   ),
                 ),
@@ -119,7 +119,7 @@ class _Tray3AnalysisState extends State<Tray3Analysis> {
                         // Action for top camera view button
                         Navigator.pushNamed(context, "Results Screen");
                       },
-                      child: const Text('Finish ',style: TextStyle(fontSize:20),),
+                      child:  Text('Finish ',style:textStyleForAllText ()),
                     ),
                   ),
                 ),
@@ -139,7 +139,7 @@ class _Tray3AnalysisState extends State<Tray3Analysis> {
 
                         Navigator.pushNamed(context, "Tray 2 Analysis Screen");
                       },
-                      child: const Text('Back ',style:TextStyle(fontSize:20)),
+                      child: Text('Back ',style:textStyleForAllText ()),
                     ),
                   ),
                 ),

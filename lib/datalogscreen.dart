@@ -1,38 +1,76 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_ics_homescreen/resultscreenwidget.dart';
 import 'package:flutter_ics_homescreen/screen1.dart';
 import 'package:flutter_ics_homescreen/screen2.dart';
+import 'package:flutter_ics_homescreen/screensize.dart';
 import 'package:flutter_ics_homescreen/viewdatalogscreen.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
-
 import 'Data/variables/variables.dart';
 import 'datalogscreenwidget.dart';
 
-
 class DataLogScreen extends StatefulWidget {
   const DataLogScreen({super.key});
-
 
   @override
   State<DataLogScreen> createState() => _DataLogScreenState();
 }
 
 class _DataLogScreenState extends State<DataLogScreen> {
-  @override
+  Color? _selectedColor;
   double _value = 40.0;
+  List<Map<String, String>> _dataList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+  }
+
+  void _loadData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> agentData = prefs.getStringList('agents') ?? [];
+    setState(() {
+      _dataList = agentData.map((data) => Map<String, String>.from(jsonDecode(data))).toList();
+    });
+  }
+
+
+  void _deleteSelectedAgent() async {
+    if (selectedAgenttoview != null) {
+      setState(() {
+        _dataList.remove(selectedAgenttoview);
+        selectedAgenttoview = null;
+      });
+
+      // Update SharedPreferences
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      List<String> updatedData = _dataList.map((data) => jsonEncode(data)).toList();
+      await prefs.setStringList('agents', updatedData);
+    }
+  }
+
+  TextStyle textStyleForAllText() {
+    return const TextStyle(fontSize: 18, color: Colors.white);
+  }
+
+  TextStyle textStyleBelowScreen() {
+    return const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white);
+  }
+
   @override
   Widget build(BuildContext context) {
-    final screenheight=MediaQuery.of(context).size.height ;
-    final screenwidth=MediaQuery.of(context).size.width ;
-    print("$screenwidth");
-    print("$screenheight");
-    return Scaffold(
 
+
+    bool isDataAvailable = _dataList.isNotEmpty;
+
+    return Scaffold(
       body: Container(
-        height: screenheight,
-        width: screenwidth,
-        color:Colors.blueGrey,
+        height: screenHeight,
+        width: screenWidth,
+        color: Colors.blueGrey,
         child: Column(
           children: [
             const SizedBox(height: 20),
@@ -40,213 +78,197 @@ class _DataLogScreenState extends State<DataLogScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
-                    width: screenwidth*0.15,
-                    color:Colors.white,
-                    child: Image.asset('asset/mylogo.png')), // Replace 'assets/logo.png' with your logo
+                  width: screenWidth * 0.15,
+                  color: Colors.white,
+                  child: Image.asset('asset/mylogo.png'), // Replace 'assets/logo.png' with your logo
+                ),
                 Container(
-                    alignment: Alignment.center,
-                    width: screenwidth*0.60 ,child: const Text("Knemetic solutions",style: TextStyle(fontSize:40,fontWeight:FontWeight.normal,color:Colors.white),)),
+                  alignment: Alignment.center,
+                  width: screenWidth * 0.60,
+                  child: const Text(
+                    "Knemetic solutions",
+                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.normal, color: Colors.white),
+                  ),
+                ),
                 Container(
-                  color:Colors.blue,
-                  width: screenwidth*0.15,
+                  color: Colors.blue,
+                  width: screenWidth * 0.15,
                   child: Column(
                     children: [
                       Row(
                         children: [
-                          const Icon(Icons.calendar_month_rounded,color:Colors.white),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white),),
+                          const Icon(Icons.calendar_month_rounded, color: Colors.white),
+                          Text(
+                            DateFormat('EEEE dd MMM').format(DateTime.now()),
+                            style: textStyleForAllText(),
+                          ),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white)),
+                          Text(
+                            DateFormat('            HH:mm:ss').format(DateTime.now()),
+                            style: textStyleForAllText(),
+                          ),
                         ],
                       ),
                     ],
                   ),
-
                 ),
               ],
             ),
             const Spacer(),
-            Row(
-              children: [
-                Column(children: [
-                  DataLogScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "Agent Name", ),
-                  const SizedBox(height: 10,),
-                  DataLogScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "Agent Name", ),
-                  const SizedBox(height: 10,),
-                  DataLogScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "Agent Name", ),
-                  const SizedBox(height: 10,),
-                  DataLogScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "Agent Name", ),
-                  const SizedBox(height: 10,),
-                  DataLogScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "Agent Name", ),
-                  const SizedBox(height: 10,),
-                  DataLogScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "Agent Name", ),
-                  const SizedBox(height: 10,),
-
-                ],),
-
-
-                SizedBox(width:screenwidth*0.02,),
-                Column(children: [
-                  DataLogScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "Analysis Data", ),
-                  const SizedBox(height: 10,),
-                  DataLogScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "Analysis Data", ),
-                  const SizedBox(height: 10,),
-                  DataLogScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "Analysis Data", ),
-                  const SizedBox(height: 10,),
-                  DataLogScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "Analysis Data", ),
-                  const SizedBox(height: 10,),
-                  DataLogScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "Analysis Data", ),
-                  const SizedBox(height: 10,),
-                  DataLogScreenWidget(screenwidth: screenwidth, screenheight: screenheight, innertext: "Analysis Data", ),
-                  const SizedBox(height: 10,),
-
-
-
-
-
-
-
-                ],),
-
-
-                const SizedBox(width:20,),
-                SizedBox(width:MediaQuery.of(context).size.width*0.05 ,height:MediaQuery.of(context).size.height*0.45,
-                    child: SfSlider.vertical(
-                      min: 0.0,
-                      max: 100.0,
-                      value: _value,
-                      interval: 20,
-                      showTicks: false,
-                      showLabels: false,
-
-                      onChanged: (dynamic value){
-                        setState(() {
-                          _value = value;
-                        });
-                      },
-                    )
-                  // Slider(value: 20/1024, onChanged: (double){
-                    //
-                    //
-                    // })
-                    //
-                ),
-
-
-                const SizedBox(width:250,),
-
-                Column(children: [
-                  Container(
-
-                    height:screenheight*.06,
-                    width: screenwidth*0.10,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20), // Adjust the value as needed
-                    ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Action for top camera view button
-                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const ViewDataLogScreen()));
-                      },
-                      child: const Text('View',style: TextStyle(color: Colors.white,fontSize: 20),),
+            if (isDataAvailable)
+              Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: SizedBox(
+                      height: screenHeight * 0.45,
+                      child: ListView.builder(
+                        itemCount: _dataList.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Row(
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    selectedAgenttoview = _dataList[index];
+                                    setState(() {
+                                      _selectedColor = Colors.red;
+                                    });
+                                  },
+                                  child: DataLogScreenWidget(
+                                    screenwidth: screenWidth,
+                                    screenheight: screenHeight,
+                                    innertext: _dataList[index]['name'] ?? "null",
+                                    selectedcolor: _dataList[index] == selectedAgenttoview ? Colors.red : Colors.blue,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: DataLogScreenWidget(
+                                    screenwidth: screenWidth,
+                                    screenheight: screenHeight,
+                                    innertext: _dataList[index]['AnalysisDate'] ?? "null",
+                                    selectedcolor: Colors.blue,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                     ),
                   ),
+                  const SizedBox(width: screenWidth * 0.02),
+                  const SizedBox(width: 20),
+                  const SizedBox(width: 250),
+                  Column(
+                    children: [
+                      Container(
+                        height: screenHeight * .06,
+                        width: screenWidth * 0.10,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (BuildContext context) => const ViewDataLogScreen()),
+                            );
+                          },
+                          child: Text('View', style: textStyleForAllText()),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Container(
+                        height: screenHeight * .06,
+                        width: screenWidth * 0.10,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            // Action for print button
+                          },
+                          child: Text('Print', style: textStyleForAllText()),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Container(
+                        height: screenHeight * .06,
+                        width: screenWidth * 0.10,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            // Action for email button
 
+                          },
+                          child: Text('Email', style: textStyleForAllText()),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Container(
+                        height: screenHeight * .06,
+                        width: screenWidth * 0.10,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(builder: (BuildContext context) => const Screen2()),
+                            // );
 
-                  const SizedBox(height: 20,),
+                            _deleteSelectedAgent() ;
+                            setState(() {
 
-                  Container(
-                    height:screenheight*.06,
-                    width: screenwidth*0.10,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20), // Adjust the value as needed
-                    ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Action for top camera view button
-                      },
-                      child: const Text('Print ',style: TextStyle(color: Colors.white,fontSize: 20)),
+                            });
 
-
-
-
-                    ),
+                          },
+                          child: Text('Delete', style: textStyleForAllText()),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Container(
+                        height: screenHeight * .06,
+                        width: screenWidth * 0.10,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (BuildContext context) => const Screen1()),
+                            );
+                          },
+                          child: Text('Home', style: textStyleForAllText()),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                    ],
                   ),
-
-
-                  const SizedBox(height: 20,),
-
-                  Container(
-                    height:screenheight*.06,
-                    width: screenwidth*0.10,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20), // Adjust the value as needed
-                    ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Action for top camera view button
-                      },
-                      child: const Text('Email ',style: TextStyle(color: Colors.white,fontSize: 20)),
-                    ),
-                  ),
-
-
-
-                  const SizedBox(height: 20,),
-                  Container(
-                    height:screenheight*.06,
-                    width: screenwidth*0.10,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20), // Adjust the value as needed
-                    ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Action for top camera view button
-                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const Screen2()));
-                      },
-                      child: const Text('Delete ',style: TextStyle(color: Colors.white,fontSize: 20)),
-                    ),
-                  ),
-
-                  const SizedBox(height: 20,),
-                  Container(
-                    height:screenheight*.06,
-                    width: screenwidth*0.10,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20), // Adjust the value as needed
-                    ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Action for top camera view button
-                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const Screen1()));
-                      },
-                      child: const Text('Home ',style: TextStyle(color: Colors.white,fontSize: 20)),
-                    ),
-                  ),
-
-
-                  const SizedBox(height: 20,),
-
-                ],),
-              ],
-            ),
+                ],
+              )
+            else
+              const SizedBox(height: 10, width: 10),
             const Spacer(),
             Container(
-
-              //color:Colors.wh,
-              decoration:BoxDecoration(
-                  border: Border.all(color:Colors.blueGrey)
-              ),
-              width: screenwidth*.8,
-              height: screenheight*0.1,
-              child:  const Row(
+              decoration: BoxDecoration(border: Border.all(color: Colors.blueGrey)),
+              width: screenWidth * .8,
+              height: screenHeight * 0.1,
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.analytics_outlined,color: Colors.white,size: iconbelowscreen,),
-                  Text('Stored Analysis Data ',style:TextStyle(color:Colors.white,fontSize:25),),
+                  const Icon(Icons.analytics_outlined, color: Colors.white, size: 50),
+                  Text('Stored Analysis Data', style: textStyleBelowScreen()),
                 ],
               ),
             ),
@@ -257,3 +279,299 @@ class _DataLogScreenState extends State<DataLogScreen> {
     );
   }
 }
+
+
+// import 'dart:convert';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_ics_homescreen/resultscreenwidget.dart';
+// import 'package:flutter_ics_homescreen/screen1.dart';
+// import 'package:flutter_ics_homescreen/screen2.dart';
+// import 'package:flutter_ics_homescreen/screensize.dart';
+// import 'package:flutter_ics_homescreen/viewdatalogscreen.dart';
+// import 'package:intl/intl.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:syncfusion_flutter_sliders/sliders.dart';
+// import 'Data/variables/variables.dart';
+// import 'datalogscreenwidget.dart';
+//
+// class DataLogScreen extends StatefulWidget {
+//   const DataLogScreen({super.key});
+//
+//   @override
+//   State<DataLogScreen> createState() => _DataLogScreenState();
+// }
+//
+// class _DataLogScreenState extends State<DataLogScreen> {
+//   Color ? _selectedColor ;
+//   double _value = 40.0;
+//   List<Map<String, String>> _dataList = [];
+//
+//   @override
+//   void initState() {
+//     super.initState();
+//     _loadData();
+//   }
+//
+//   void _loadData() async {
+//     SharedPreferences prefs = await SharedPreferences.getInstance();
+//     List<String> agentData = prefs.getStringList('agents') ?? [];
+//     setState(() {
+//       _dataList = agentData.map((data) => Map<String, String>.from(jsonDecode(data))).toList();
+//     });
+//   }
+//
+//   TextStyle textStyleForAllText() {
+//     return const TextStyle(fontSize: 18, color: Colors.white);
+//   }
+//
+//   TextStyle textStyleBelowScreen() {
+//     return const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white);
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     bool isDataAvailable = _dataList.isNotEmpty;
+//     return Scaffold(
+//       body: Container(
+//         height: screenHeight,
+//         width: screenWidth,
+//         color: Colors.blueGrey,
+//         child: Column(
+//           children: [
+//             const SizedBox(height: 20),
+//             Row(
+//               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//               children: [
+//                 Container(
+//                   width: screenWidth * 0.15,
+//                   color: Colors.white,
+//                   child: Image.asset('asset/mylogo.png'), // Replace 'assets/logo.png' with your logo
+//                 ),
+//                 Container(
+//                   alignment: Alignment.center,
+//                   width: screenWidth * 0.60,
+//                   child: const Text(
+//                     "Knemetic solutions",
+//                     style: TextStyle(fontSize: 40, fontWeight: FontWeight.normal, color: Colors.white),
+//                   ),
+//                 ),
+//                 Container(
+//                   color: Colors.blue,
+//                   width: screenWidth * 0.15,
+//                   child: Column(
+//                     children: [
+//                       Row(
+//                         children: [
+//                           const Icon(Icons.calendar_month_rounded, color: Colors.white),
+//                           Text(
+//                             DateFormat('EEEE dd MMM').format(DateTime.now()),
+//                             style: textStyleForAllText(),
+//                           ),
+//                         ],
+//                       ),
+//                       Row(
+//                         children: [
+//                           Text(
+//                             DateFormat('            HH:mm:ss').format(DateTime.now()),
+//                             style: textStyleForAllText(),
+//                           ),
+//                         ],
+//                       ),
+//                     ],
+//                   ),
+//                 ),
+//               ],
+//             ),
+//             const Spacer(),
+//             if(isDataAvailable)
+//             Row(
+//               children: [
+//                 Expanded(
+//                   flex: 1,
+//                   child: SizedBox(
+//                     height: screenHeight * 0.45,
+//                     child: ListView.builder(
+//                       itemCount: _dataList.length,
+//                       itemBuilder: (BuildContext context, int index) {
+//                         return Padding(
+//                           padding: const EdgeInsets.all(10.0),
+//                           child: Row(
+//                             children: [
+//                               GestureDetector(
+//
+//                                 onTap:(){
+//                                   selectedAgenttoview=_dataList[index];
+//                                   _selectedColor=Colors.red;
+//                                   setState(() {
+//
+//                                   });
+//
+//                         },
+//                                 child: DataLogScreenWidget(
+//                                   screenwidth: screenWidth,
+//                                   screenheight: screenHeight,
+//                                   innertext: _dataList[index]['name'] ?? "null", selectedcolor: _dataList[index]== selectedAgenttoview?Colors.red: Colors.blue,
+//                                 ),
+//                               ),
+//
+//
+//
+//                           Padding(
+//                             padding: const EdgeInsets.all(20.0),
+//                             child: DataLogScreenWidget(
+//                               screenwidth: screenWidth,
+//                               screenheight: screenHeight,
+//                               innertext: _dataList[index]['AnalysisDate'] ?? "null", selectedcolor: Colors.blue,
+//                             ),
+//                           )
+//
+//                             ],
+//                           ),
+//                         );
+//                       },
+//                     ),
+//                   ),
+//                 ),
+//                 const SizedBox(width: screenWidth * 0.02),
+//
+//                 const SizedBox(width: 20),
+//                 // SizedBox(
+//                 //   width: MediaQuery.of(context).size.width * 0.05,
+//                 //   height: MediaQuery.of(context).size.height * 0.45,
+//                 //   child: SfSlider.vertical(
+//                 //     min: 0.0,
+//                 //     max: 100.0,
+//                 //     value: _value,
+//                 //     interval: 20,
+//                 //     showTicks: false,
+//                 //     showLabels: false,
+//                 //     onChanged: (dynamic value) {
+//                 //       setState(() {
+//                 //         _value = value;
+//                 //       });
+//                 //     },
+//                 //   ),
+//                 // ),
+//                 const SizedBox(width: 250),
+//                 Column(
+//                   children: [
+//                     Container(
+//                       height: screenHeight * .06,
+//                       width: screenWidth * 0.10,
+//                       decoration: BoxDecoration(
+//                         borderRadius: BorderRadius.circular(20),
+//                       ),
+//                       child: ElevatedButton(
+//                         onPressed: () {
+//                           Navigator.push(
+//                             context,
+//                             MaterialPageRoute(builder: (BuildContext context) => const ViewDataLogScreen()),
+//                           );
+//                         },
+//                         child: Text('View', style: textStyleForAllText()),
+//                       ),
+//                     ),
+//                     const SizedBox(height: 20),
+//                     Container(
+//                       height: screenHeight * .06,
+//                       width: screenWidth * 0.10,
+//                       decoration: BoxDecoration(
+//                         borderRadius: BorderRadius.circular(20),
+//                       ),
+//                       child: ElevatedButton(
+//                         onPressed: () {
+//                           // Action for print button
+//                         },
+//                         child: Text('Print', style: textStyleForAllText()),
+//                       ),
+//                     ),
+//                     const SizedBox(height: 20),
+//                     Container(
+//                       height: screenHeight * .06,
+//                       width: screenWidth * 0.10,
+//                       decoration: BoxDecoration(
+//                         borderRadius: BorderRadius.circular(20),
+//                       ),
+//                       child: ElevatedButton(
+//                         onPressed: () {
+//                           // Action for email button
+//                         },
+//                         child: Text('Email', style: textStyleForAllText()),
+//                       ),
+//                     ),
+//                     const SizedBox(height: 20),
+//                     Container(
+//                       height: screenHeight * .06,
+//                       width: screenWidth * 0.10,
+//                       decoration: BoxDecoration(
+//                         borderRadius: BorderRadius.circular(20),
+//                       ),
+//                       child: ElevatedButton(
+//                         onPressed: () {
+//                           Navigator.push(
+//                             context,
+//                             MaterialPageRoute(builder: (BuildContext context) => const Screen2()),
+//                           );
+//                         },
+//                         child: Text('Delete', style: textStyleForAllText()),
+//                       ),
+//                     ),
+//                     const SizedBox(height: 20),
+//                     Container(
+//                       height: screenHeight * .06,
+//                       width: screenWidth * 0.10,
+//                       decoration: BoxDecoration(
+//                         borderRadius: BorderRadius.circular(20),
+//                       ),
+//                       child: ElevatedButton(
+//                         onPressed: () {
+//                           Navigator.push(
+//                             context,
+//                             MaterialPageRoute(builder: (BuildContext context) => const Screen1()),
+//                           );
+//                         },
+//                         child: Text('Home', style: textStyleForAllText()),
+//                       ),
+//                     ),
+//                     const SizedBox(height: 20),
+//                   ],
+//                 ),
+//               ],
+//             )
+//
+//             else
+//               const SizedBox(height:10,width:10),
+//             const Spacer(),
+//             Container(
+//               decoration: BoxDecoration(border: Border.all(color: Colors.blueGrey)),
+//               width: screenWidth * .8,
+//               height: screenHeight * 0.1,
+//               child: Row(
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: [
+//                   const Icon(Icons.analytics_outlined, color: Colors.white, size: 50),
+//                   Text('Stored Analysis Data', style: textStyleBelowScreen()),
+//                 ],
+//               ),
+//             ),
+//             const SizedBox(height: 20),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

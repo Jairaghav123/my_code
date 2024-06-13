@@ -47,12 +47,12 @@ class _Screen3State extends State<Screen3> {
                       Row(
                         children: [
                           const Icon(Icons.calendar_month_rounded,color:Colors.white),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white),),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: textStyleForAllText ()),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white)),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: textStyleForAllText ()),
                         ],
                       ),
                     ],
@@ -84,7 +84,7 @@ class _Screen3State extends State<Screen3> {
               children: [
                 Image.asset("asset/cinemabg.png",height: 80,width: 80,),
                 const SizedBox(height:10),
-                const Text("Top Light settings",style:TextStyle(fontSize:20,color:Colors.white),),
+                Text("Top Light settings",style:textStyleForAllText ()),
               ],
             ),
           ),
@@ -112,15 +112,15 @@ class _Screen3State extends State<Screen3> {
             Row(
               children: [
                  const SizedBox(width:screenWidth*0.10,),
-                const SizedBox(
+                 SizedBox(
                   width: screenWidth*.8,
                   height: screenHeight*0.06,
                   child:  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.settings,size:50,color:Colors.blue),
-                      SizedBox(height:10),
-                      Text('Adjust Top Camera and Top lighting parameters ',style: TextStyle(fontSize: 25,color:Colors.white),),
+                      const Icon(Icons.settings,size:50,color:Colors.blue),
+                      const SizedBox(height:10),
+                      Text('Adjust Top Camera and Top lighting parameters ',style: textStyleBelowScreen ()),
                     ],
                   ),
                 ),
@@ -129,7 +129,7 @@ class _Screen3State extends State<Screen3> {
                 SizedBox(height:screenHeight*0.07,width:130,child: ElevatedButton(onPressed: (){
 
                   Navigator.pushNamed(context,"SettingsScreen");
-                }, child: const Text("Back",style: TextStyle(fontSize: 20,color:Colors.white),))),
+                }, child: Text("Back",style:textStyleForAllText ()))),
 
 
               ],

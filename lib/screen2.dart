@@ -46,12 +46,12 @@ class _Screen2State extends State<Screen2> {
                       Row(
                         children: [
                           const Icon(Icons.calendar_month_rounded,color:Colors.white),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white),),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: textStyleForAllText ()),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white)),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: textStyleForAllText ()),
                         ],
                       ),
                     ],
@@ -76,11 +76,11 @@ class _Screen2State extends State<Screen2> {
                       Navigator.pushNamed(context, "Color and light settings-Top Screen",);
                       // Action for top camera view button
                     },
-                    child: const Column(
+                    child:  Column(
                       mainAxisAlignment:MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.camera,size:50,),
-                        Text('Top camera and light settings',style: TextStyle(fontSize:20,color:Colors.white)),
+                        const Icon(Icons.camera,size:50,),
+                        Text('Top camera and light settings',style: textStyleForAllText ()),
                       ],
                     ),
                   ),
@@ -98,11 +98,11 @@ class _Screen2State extends State<Screen2> {
                       // Action for top camera view button
                       Navigator.pushNamed(context,  "Color and light settings-Bottom Screen",);
                     },
-                    child: const Column(
+                    child:  Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.camera_alt,size:50,),
-                        Text('Bottom camera and light settings',style: TextStyle(fontSize:20,color:Colors.white)),
+                        const Icon(Icons.camera_alt,size:50,),
+                        Text('Bottom camera and light settings',style: textStyleForAllText ()),
                       ],
                     ),
                   ),
@@ -119,7 +119,7 @@ class _Screen2State extends State<Screen2> {
                       // Action for top camera view button
                       Navigator.pushNamed(context, "Defect Selection Screen");
                     },
-                    child: const Text('Defect selction setting',style: TextStyle(fontSize:20,color:Colors.white)),
+                    child: Text('Defect selction setting',style: textStyleForAllText ()),
                   ),
                 ),
 
@@ -142,7 +142,7 @@ class _Screen2State extends State<Screen2> {
                         // Action for top camera view button
                         Navigator.pushNamed(context, "HomeScreen");
                       },
-                      child: const Text('Back ',style: TextStyle(fontSize:20,color:Colors.white),),
+                      child:  Text('Back ',style: textStyleForAllText ()),
                     ),
                   ),
                 ),
@@ -151,14 +151,14 @@ class _Screen2State extends State<Screen2> {
               ],
             ),
             const Spacer(),
-            const SizedBox(
+             SizedBox(
               width: screenWidth*.8,
               height: screenHeight*0.06,
               child:  Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.settings,size:50,color:Colors.blue,),
-                  Text(' Settings ',style: TextStyle(fontSize: textbelowscreen,color:Colors.white),),
+                  const Icon(Icons.settings,size:50,color:Colors.blue,),
+                  Text(' Settings ',style: textStyleBelowScreen ()),
                 ],
               ),
             ),

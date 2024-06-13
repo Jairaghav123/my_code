@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+
+import 'Data/variables/variables.dart';
 class DataLogScreenWidget extends StatelessWidget {
   const DataLogScreenWidget({
     super.key,
     required this.screenwidth,
-    required this.screenheight, required this.innertext,
+    required this.screenheight, required this.innertext, required this.selectedcolor,
   });
 
   final double screenwidth;
   final double screenheight;
   final String innertext ;
+  final Color selectedcolor ;
 
 
   @override
@@ -20,7 +23,7 @@ class DataLogScreenWidget extends StatelessWidget {
 
       Row(
         children: [
-          Container(alignment:Alignment.center,color:Colors.blue ,width:screenwidth*0.25,height:screenheight*0.05,child: Text(innertext,style: const TextStyle(color:Colors.white,fontSize: 20),),),
+          Container(alignment:Alignment.center,color:selectedcolor ,width:screenwidth*0.25,height:screenheight*0.05,child: Text(innertext,style: textStyleForAllText ()),),
 
         ],
       ),

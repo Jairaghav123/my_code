@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Data/variables/variables.dart';
+
 class slider_screen3 extends StatefulWidget {
   final double slidervalue;
   const slider_screen3({
@@ -23,7 +25,7 @@ class _slider_screen3State extends State<slider_screen3> {
         Container(
           width:MediaQuery.of(context).size.width*0.18 ,
           alignment:Alignment.center,
-          child: Text(widget.slidervalue.toString(),style:const TextStyle(color:Colors.white,fontSize: 20),),
+          child: Text(widget.slidervalue.toString(),style:textStyleForAllText ()),
         ),
       ],
     );
@@ -65,7 +67,7 @@ class _slider_brightnessState extends State<slider_brightness> {
         Container(
           width:MediaQuery.of(context).size.width*0.18 ,
           alignment:Alignment.center,
-          child: Text(widget.slidervalue.toString(),style:const TextStyle(color:Colors.white,fontSize: 20),),
+          child: Text(widget.slidervalue.toString(),style:textStyleForAllText ()),
         ),
       ],
     );

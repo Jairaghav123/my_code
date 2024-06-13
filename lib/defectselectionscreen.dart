@@ -50,12 +50,12 @@ class _defectselectionState extends State<defectselection> {
                       Row(
                         children: [
                           const Icon(Icons.calendar_month_rounded),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color: Colors.white)),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style:textStyleForAllText ()),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white)),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: textStyleForAllText ()),
                         ],
                       ),
                     ],
@@ -115,21 +115,21 @@ class _defectselectionState extends State<defectselection> {
 
                   Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const Screen2()));
 
-                }, child: const Text("Back",style: TextStyle(fontSize:20,color:Colors.white),)))
+                }, child: Text("Back",style: textStyleForAllText ())))
               ],
             ),
             const Spacer(),
-            const Row(
+             Row(
               children: [
-                SizedBox(width:screenWidth*0.10,height: screenHeight*0.10,),
+                const SizedBox(width:screenWidth*0.10,height: screenHeight*0.10,),
                 SizedBox(
                   width: screenWidth*.8,
                   height: screenHeight*0.06,
                   child:  Row(
                     mainAxisAlignment:MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.settings,size:50,color:Colors.blue,),
-                      Text(' Settings ',style: TextStyle(fontSize: 25,color:Colors.white),),
+                      const Icon(Icons.settings,size:50,color:Colors.blue,),
+                      Text(' Settings ',style: textStyleBelowScreen ()),
                     ],
                   ),
                 ),

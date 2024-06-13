@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ics_homescreen/screen1.dart';
 import 'package:flutter_ics_homescreen/screensize.dart';
 
+import 'Data/variables/variables.dart';
+
 class TopCameraview extends StatefulWidget {
   const TopCameraview({super.key});
 
@@ -50,7 +52,7 @@ class _TopCameraviewState extends State<TopCameraview> {
 
                 SizedBox(width:120,height:50,child: ElevatedButton(onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const Screen1()));
-                }, child: const Text("Back",style:TextStyle(color:Colors.white,fontSize: 20))))
+                }, child: Text("Back",style:textStyleBelowScreen ())))
               ],
             ),
             const Spacer(),
@@ -62,7 +64,7 @@ class _TopCameraviewState extends State<TopCameraview> {
                   alignment: Alignment.center,
                   width: screenWidth*.8,
                   height: screenHeight*0.06,
-                  child:  const Text('Top CAM Preview ',style: TextStyle(fontSize: 25,color:Colors.white),),
+                  child:  Text('Top CAM Preview ',style: textStyleBelowScreen ()),
                 ),
 
 

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ics_homescreen/screen1.dart';
 import 'package:flutter_ics_homescreen/screensize.dart';
 
+import 'Data/variables/variables.dart';
+
 class BottomCameraview extends StatefulWidget {
   const BottomCameraview({super.key});
 
@@ -51,7 +53,7 @@ class _BottomCameraviewState extends State<BottomCameraview> {
 
                 SizedBox(width:120,height:50,child: ElevatedButton(onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const Screen1()));
-                }, child: const Text("Back",style:TextStyle(color:Colors.white,fontSize: 20))))
+                }, child: Text("Back",style:textStyleForAllText ())))
               ],
             ),
             const Spacer(),
@@ -63,7 +65,8 @@ class _BottomCameraviewState extends State<BottomCameraview> {
                   alignment: Alignment.center,
                   width: screenWidth*.8,
                   height: screenHeight*0.06,
-                  child:  const Text('Bottom CAM Preview ',style: TextStyle(fontSize: 25,color:Colors.white),),
+                  child:  Text('Bottom CAM Preview ',style: textStyleBelowScreen ()
+                      ),
                 ),
 
 

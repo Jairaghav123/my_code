@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'Data/variables/variables.dart';
 class defectselectioncolumn extends StatefulWidget {
    defectselectioncolumn({
     super.key,
@@ -28,7 +30,7 @@ class _defectselectioncolumnState extends State<defectselectioncolumn> {
             widget.firstvalue=value! ;
           });  },),),
           const SizedBox(width:10),
-          Container(alignment:Alignment.center,color:Colors.blue ,width:widget.screenwidth*0.20,height:widget.screenheight*0.05,child: Text(widget.innertext,style: const TextStyle(fontSize:20,color:Colors.white ),),),
+          Container(alignment:Alignment.center,color:Colors.blue ,width:widget.screenwidth*0.20,height:widget.screenheight*0.05,child: Text(widget.innertext,style: textStyleForAllText ()),),
         ],
       ),
     );

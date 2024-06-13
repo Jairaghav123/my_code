@@ -36,7 +36,7 @@ class _Tray2AnalysisState extends State<Tray2Analysis> {
                 //const SizedBox(width:250),
                 Container(
                     alignment: Alignment.center,
-                    width: screenWidth*0.60 ,child: Text("Knemetic solutions",style: TextStyle(fontSize:40,fontWeight:FontWeight.normal,color:Colors.white),)),
+                    width: screenWidth*0.60 ,child: const Text("Knemetic solutions",style: TextStyle(fontSize:40,fontWeight:FontWeight.normal,color:Colors.white),)),
                 Container(
                   color:Colors.blue,
                   width: screenWidth*0.15,
@@ -45,12 +45,12 @@ class _Tray2AnalysisState extends State<Tray2Analysis> {
                       Row(
                         children: [
                           const Icon(Icons.calendar_month_rounded,color:Colors.white),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white),),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: textStyleForAllText ()),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: const TextStyle(fontSize: datetimefontsize,color:Colors.white)),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: textStyleForAllText ()),
                         ],
                       ),
                     ],
@@ -74,11 +74,11 @@ class _Tray2AnalysisState extends State<Tray2Analysis> {
                     borderRadius: BorderRadius.circular(10), // Adjust the value as needed
                   ),),
                   const SizedBox(height:10,),
-                  const Row(
+                   Row(
                     mainAxisAlignment:MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('0%',style: TextStyle(fontSize:20,color: Colors.white)),
-                      Text('100%',style: TextStyle(fontSize:20,color: Colors.white)),
+                      Text('0%',style: textStyleForAllText ()),
+                      Text('100%',style: textStyleForAllText ()),
                     ],
                   ),
                 ],
@@ -101,7 +101,7 @@ class _Tray2AnalysisState extends State<Tray2Analysis> {
                       onPressed: () {
                         // Action for top camera view button
                       },
-                      child: const Text('Restart Tray 2',style: TextStyle(fontSize:20)),
+                      child: Text('Restart Tray 2',style:textStyleForAllText ()),
                     ),
                   ),
                 ),
@@ -121,7 +121,7 @@ class _Tray2AnalysisState extends State<Tray2Analysis> {
                         // Action for top camera view button
                         Navigator.pushNamed(context,"Tray 3 Analysis Screen");
                       },
-                      child: const Text('Insert Tray3 Next ',style: TextStyle(fontSize:20)),
+                      child: Text('Insert Tray3 Next ',style: textStyleForAllText ()),
                     ),
                   ),
                 ),
@@ -141,7 +141,7 @@ class _Tray2AnalysisState extends State<Tray2Analysis> {
 
                         Navigator.pushNamed(context,"Tray 1 Analysis Screen" );
                       },
-                      child: const Text('Back ',style: TextStyle(fontSize:20)),
+                      child:  Text('Back ',style: textStyleForAllText ()),
                     ),
                   ),
                 ),
@@ -159,11 +159,11 @@ class _Tray2AnalysisState extends State<Tray2Analysis> {
               ),
               width: screenWidth*.8,
               height: screenHeight*0.1,
-              child:  const Row(
+              child:   Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.analytics_outlined,color: Colors.white,size: iconbelowscreen),
-                  Text('Tray 2 Analysis in progress please wait ',style:TextStyle(color:Colors.white,fontSize: textbelowscreen),),
+                  const Icon(Icons.analytics_outlined,color: Colors.white,size: iconbelowscreen),
+                  Text('Tray 2 Analysis in progress please wait ',style:textStyleBelowScreen()),
                 ],
               ),
             ),

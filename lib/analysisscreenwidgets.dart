@@ -1,4 +1,3 @@
-//
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
@@ -29,10 +28,10 @@ class AnalysisScreenWidget extends StatelessWidget {
             controller:TextEditingController,
             keyboardType: TextInputType.text,
             textAlign:TextAlign.center,
-            style: const TextStyle(color: Colors.white,fontSize:startAnalysisscreenfontsize),
+            style: textStyleForAllText (),
             decoration: InputDecoration(
               hintText: hinttext,
-                  hintStyle:const TextStyle(color: Colors.white,fontSize: startAnalysisscreenfontsize)
+                  hintStyle:textStyleForAllText ()
             ),
 
               ),),
