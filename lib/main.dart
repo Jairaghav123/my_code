@@ -29,12 +29,12 @@ void main () async
   WidgetsFlutterBinding.ensureInitialized();
   await windowManager.ensureInitialized();
 
-  if(Platform.isLinux || Platform.isWindows)
-    {
-
-      WindowManager.instance.setMinimumSize(const Size(1920,1080));
-      WindowManager.instance.setMaximumSize(const Size(1920,1080));
-    }
+  // if(Platform.isLinux || Platform.isWindows)
+  //   {
+  //
+  //     WindowManager.instance.setMinimumSize(const Size(1920,1080));
+  //     WindowManager.instance.setMaximumSize(const Size(1920,1080));
+  //   }
   runApp(const MyApp());
 
 }
