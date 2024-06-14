@@ -39,7 +39,7 @@ dependencies:
   syncfusion_flutter_sliders: ^19.1.56-beta
   intl: ^0.17.0
   flutter_keyboard_visibility: ^6.0.0
-  window_manager: ^0.3.9
+ # window_manager: ^0.3.9
   pdf: ^3.10.8
   path_provider: ^2.1.2
   file_picker: ^6.2.1

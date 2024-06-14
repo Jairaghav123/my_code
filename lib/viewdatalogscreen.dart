@@ -49,7 +49,7 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
         color:Colors.blueGrey,
         child: Column(
           children: [
-            const SizedBox(height: 20),
+            const SizedBox(height: screenHeight*0.0185),  //
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -82,7 +82,7 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
                 ),
               ],
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: screenHeight*0.0462),//50
             if (isDataAvailable)
             Row(
 
@@ -109,23 +109,23 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
             style: textStyleForAllText(),
                                      ),
                 ),
-            const SizedBox(height:40,),
+            const SizedBox(height:screenHeight*0.037,), //40
             if (isDataAvailable)
             Row(
               children: [
                   Column(children: [
                   ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "MC", percentagetext: selectedAgenttoview?['MC'] ?? "null"),
-                  const SizedBox(height: 10,),
+                  const SizedBox(height: screenHeight*0.00925),
                   ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "PB", percentagetext: selectedAgenttoview?['PB'] ?? "null"),
-                  const SizedBox(height: 10,),
+                  const SizedBox(height: screenHeight*0.00925),
                   ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "AAA", percentagetext: selectedAgenttoview?['AAA'] ?? "null"),
-                  const SizedBox(height: 10,),
+                  const SizedBox(height: screenHeight*0.00925),
                   ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "AA", percentagetext: selectedAgenttoview?['AA'] ?? "null"),
-                  const SizedBox(height: 10,),
+                  const SizedBox(height: screenHeight*0.00925),
                   ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "A", percentagetext: selectedAgenttoview?['A'] ?? "null"),
-                  const SizedBox(height: 10,),
+                  const SizedBox(height: screenHeight*0.00925),
                   ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "B", percentagetext: selectedAgenttoview?['B'] ?? "null"),
-                  const SizedBox(height: 10,),
+                  const SizedBox(height: screenHeight*0.00925),
 
                 ],),
 
@@ -133,24 +133,24 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
                 const SizedBox(width:screenWidth*0.20,),
                  Column(children: [
                   ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "C", percentagetext: selectedAgenttoview?['C'] ?? "null"),
-                  const SizedBox(height: 10,),
+                  const SizedBox(height: screenHeight*0.00925),
                   ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "BB", percentagetext:selectedAgenttoview?['BB'] ?? "null"),
-                  const SizedBox(height: 10,),
+                  const SizedBox(height: screenHeight*0.00925),
                   ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "BL", percentagetext: selectedAgenttoview?['BL'] ?? "null"),
-                  const SizedBox(height: 10,),
+                  const SizedBox(height: screenHeight*0.00925),
                   ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "BERRY", percentagetext: selectedAgenttoview?['BERRY'] ?? "null"),
-                  const SizedBox(height: 10,),
+                  const SizedBox(height: screenHeight*0.00925),
                   ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "BITS", percentagetext: selectedAgenttoview?['BITS'] ?? "null"),
-                  const SizedBox(height: 10,),
+                  const SizedBox(height: screenHeight*0.00925),
                   ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "HUSK/Stone", percentagetext:selectedAgenttoview?['HUSK/Stone'] ?? "null"),
-                  const SizedBox(height: 10,),
+                  const SizedBox(height: screenHeight*0.00925,),
 
 
 
                 ],),
 
 
-                const SizedBox(width:30,),
+                const SizedBox(width:screenWidth*0.015,),
 
                 Column(children: [
                   Container(
@@ -158,7 +158,7 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
                     height:screenHeight*.06,
                     width: screenWidth*0.10,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20), // Adjust the value as needed
+                      borderRadius: BorderRadius.circular(screenHeight*0.0185), // Adjust the value as needed
                     ),
                     child: ElevatedButton(
                       onPressed: () {
@@ -169,7 +169,7 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
                   ),
 
 
-                  const SizedBox(height: 40,),
+                  const SizedBox(height: screenHeight*0.037),
 
 
 
@@ -178,7 +178,7 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
                     height:screenHeight*.06,
                     width: screenWidth*0.10,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20), // Adjust the value as needed
+                      borderRadius: BorderRadius.circular(screenHeight*0.0185), // Adjust the value as needed
                     ),
                     child: ElevatedButton(
                       onPressed: () {
@@ -191,12 +191,12 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
 
 
 
-                  const SizedBox(height: 40,),
+                  const SizedBox(height: screenHeight*0.037,),//
                   Container(
                     height:screenHeight*.06,
                     width: screenWidth*0.10,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20), // Adjust the value as needed
+                      borderRadius: BorderRadius.circular(screenHeight*0.0185), // Adjust the value as needed
                     ),
                     child: ElevatedButton(
                       onPressed: () {
@@ -209,7 +209,7 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
                   ),
 
 
-                  const SizedBox(height: 20,),
+                  const SizedBox(height: screenHeight*0.0185,), //20
 
                 ],),
               ],
@@ -238,7 +238,7 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
                 ],
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: screenHeight*0.0185), //20
           ],
         ),
       ),
