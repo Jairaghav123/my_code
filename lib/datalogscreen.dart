@@ -27,6 +27,7 @@ class _DataLogScreenState extends State<DataLogScreen> {
   void initState() {
     super.initState();
     _loadData();
+
   }
 
   void _loadData() async {
@@ -34,6 +35,8 @@ class _DataLogScreenState extends State<DataLogScreen> {
     List<String> agentData = prefs.getStringList('agents') ?? [];
     setState(() {
       _dataList = agentData.map((data) => Map<String, String>.from(jsonDecode(data))).toList();
+      print(prefs.getStringList('agents'));
+      print(_dataList[_dataList.length - 2]['name'] ?? "null");
     });
   }
 

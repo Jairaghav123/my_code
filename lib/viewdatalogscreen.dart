@@ -34,6 +34,7 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
   void _loadData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     List<String> agentData = prefs.getStringList('agents') ?? [];
+
     setState(() {
       _dataList = agentData.map((data) => Map<String, String>.from(jsonDecode(data))).toList();
     });
