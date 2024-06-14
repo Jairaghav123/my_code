@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-  TextEditingController agentNameController=TextEditingController();
+TextEditingController agentNameController=TextEditingController();
 final  TextEditingController agentAddressController=TextEditingController();
 final  TextEditingController lorryNumberController=TextEditingController();
 final  TextEditingController noofBagsController=TextEditingController();
@@ -33,7 +33,7 @@ TextStyle  textStyleForAllText ()
 {
 
   return
-    const TextStyle(fontSize: 20,color:Colors.white);
+    const TextStyle(fontSize: 20,color:Colors.black);
 
 }
 
