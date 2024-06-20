@@ -1,76 +1,38 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_ics_homescreen/flutter_path_provider.dart';
 
-import 'package:flutter_ics_homescreen/defectselectionscreen.dart';
-import 'package:flutter_ics_homescreen/inserttrayscreen.dart';
-import 'package:flutter_ics_homescreen/resultscreen.dart';
-import 'package:flutter_ics_homescreen/screen1.dart';
-import 'package:flutter_ics_homescreen/screen2.dart';
-import 'package:flutter_ics_homescreen/screen3.dart';
-import 'package:flutter_ics_homescreen/screen4.dart';
-import 'package:flutter_ics_homescreen/startAnalysisscreen.dart';
-import 'package:flutter_ics_homescreen/topcamera_preview_screen.dart';
-import 'package:flutter_ics_homescreen/tray1analysisscreen.dart';
-import 'package:flutter_ics_homescreen/tray2alaysisscreen.dart';
-import 'package:flutter_ics_homescreen/tray3analysisscreen.dart';
-import 'package:flutter_ics_homescreen/viewdatalogscreen.dart';
-
-
-import 'Data/savedata.dart';
-import 'bootscreen.dart';
-import 'bottomcamera_preview_screen.dart';
-import 'datalogscreen.dart';
-
-void main ()
-{
-
-
- // WidgetsFlutterBinding.ensureInitialized();
- // await windowManager.ensureInitialized();
- //
- //  // if(Platform.isLinux || Platform.isWindows)
- //  //   {
- //  //
- //  //     WindowManager.instance.setMinimumSize(const Size(1920,1080));
- //  //     WindowManager.instance.setMaximumSize(const Size(1920,1080));
- //  //   }
+void main() {
   runApp(const MyApp());
-
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
-    return   MaterialApp(
-      debugShowCheckedModeBanner:false,
-
-      initialRoute: "/",
-      routes: {
-        "/" :  (context)=>const BootScreen(),
-        "HomeScreen" :  (context)=>const Screen1(),
-        "SettingsScreen" :  (context)=>const Screen2(),
-        "Color and light settings-Top Screen" :  (context)=>const Screen3(),
-        "Color and light settings-Bottom Screen" :  (context)=>const Screen4(),
-        "Defect Selection Screen" :  (context)=>const defectselection(),
-        "Top CAM preview Screen" :  (context)=>const TopCameraview(),
-        "Bottom CAM preview Screen" :  (context)=>const BottomCameraview(),
-        "Start Analysis Screen" :  (context)=>const StartAnalysis(),
-        "Insert Tray pop up Screen" :  (context)=>const InsertTrayscreen(),
-        "Tray 1 Analysis Screen" :  (context)=>const Tray1Analysis(),
-        "Tray 2 Analysis Screen" :  (context)=>const Tray2Analysis(),
-        "Tray 3 Analysis Screen" :  (context)=>const Tray3Analysis(),
-        "Results Screen" :  (context)=>const ResultScreen(),
-        "Data Log Screen" :  (context)=>const DataLogScreen(),
-        "View Data Log  Screen" :  (context)=>const ViewDataLogScreen(),
-        "testsaveddata" : (context)=>DataScreen()
-
-      },
-
-
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        // This is the theme of your application.
+        //
+        // TRY THIS: Try running your application with "flutter run". You'll see
+        // the application has a blue toolbar. Then, without quitting the app,
+        // try changing the seedColor in the colorScheme below to Colors.green
+        // and then invoke "hot reload" (save your changes or press the "hot
+        // reload" button in a Flutter-supported IDE, or press "r" if you used
+        // the command line to start the app).
+        //
+        // Notice that the counter didn't reset back to zero; the application
+        // state is not lost during the reload. To reset the state, use hot
+        // restart instead.
+        //
+        // This works for code too, not just values: Most code changes can be
+        // tested with just a hot reload.
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: get_path()
     );
   }
 }
