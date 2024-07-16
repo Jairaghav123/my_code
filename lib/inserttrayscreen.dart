@@ -37,20 +37,20 @@ class _InsertTrayscreenState extends State<InsertTrayscreen> {
                 Container(
                     alignment: Alignment.center,
                     width: screenWidth*0.60 ,child: const Text("Knemetic solutions",style: TextStyle(fontSize:40,fontWeight:FontWeight.normal,color:Colors.white),)),
-                Container(
-                  color:Colors.blue,
+                SizedBox(
+
                   width: screenWidth*0.15,
                   child: Column(
                     children: [
                       Row(
                         children: [
-                          const Icon(Icons.calendar_month_rounded,color:Colors.white),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: textStyleForAllText ()),
+                          const Icon(Icons.calendar_month_rounded,color:Colors.white,size: datetimeiconsize,),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: datetimefont()),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: textStyleForAllText ()),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: datetimefont()),
                         ],
                       ),
                     ],
@@ -96,9 +96,9 @@ class _InsertTrayscreenState extends State<InsertTrayscreen> {
                     child: ElevatedButton(
                       onPressed: () {
                         // Action for top camera view button
-                        Navigator.pushNamed(context, "Tray 1 Analysis Screen");
+                        Navigator.pushNamed(context, "Start Analysis Screen");
                       },
-                      child: Text('Next ',style: textStyleForAllText ()),
+                      child: Text('Back ',style: textStyleForAllText ()),
                     ),
                   ),
                 ),
@@ -114,9 +114,9 @@ class _InsertTrayscreenState extends State<InsertTrayscreen> {
                     child: ElevatedButton(
                       onPressed: () {
                         // Action for top camera view button
-                        Navigator.pushNamed(context, "Start Analysis Screen");
+                        Navigator.pushNamed(context, "Tray 1 Analysis Screen");
                       },
-                      child: Text('Back ',style: textStyleForAllText ()),
+                      child: Text('Next ',style: textStyleForAllText ()),
                     ),
                   ),
                 ),

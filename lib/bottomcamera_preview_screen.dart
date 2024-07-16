@@ -16,7 +16,6 @@ class _BottomCameraviewState extends State<BottomCameraview> {
 
   Widget build(BuildContext context) {
 
-
     return Scaffold(
 
       body: Container(
@@ -36,8 +35,8 @@ class _BottomCameraviewState extends State<BottomCameraview> {
               child:const Column(
                 mainAxisAlignment:MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.camera_alt,color:Colors.white,size:200,),
-                  Text("Bottom CAM image",style:TextStyle(color:Colors.white,fontSize:30,fontWeight:FontWeight.w500),),
+                  Icon(Icons.camera_alt,color:Colors.white,size:150,),
+                  Text("Bottom CAM image",style:TextStyle(color:Colors.white,fontSize:33,fontWeight:FontWeight.w500),),
                 ],
               ),
             ),
@@ -45,34 +44,48 @@ class _BottomCameraviewState extends State<BottomCameraview> {
 
 
 
-
+            const Spacer(),
 
             Row(
-              mainAxisAlignment:MainAxisAlignment.end,
+              mainAxisAlignment:MainAxisAlignment.start,
               children: [
+                const SizedBox(width:screenWidth*0.41),
+                Container(
+                  // alignment: Alignment.center,
+                  height:screenHeight*.1,
+                  width: screenWidth*0.15,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20), // Adjust the value as needed
+                  ),
+                  child:   Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // Action for top camera view button
+                        //Navigator.pushNamed(context, "Start Analysis Screen");
+                      },
+                      child: Text('Capture ',style: textStyleForAllText ()),
+                    ),
+                  ),
+                ),
 
-                SizedBox(width:120,height:50,child: ElevatedButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const Screen1()));
-                }, child: Text("Back",style:textStyleForAllText ())))
+                Padding(
+                  padding: const EdgeInsets.only(left: 320.0),
+                  child: Container(height:screenHeight*.1,
+                      width: screenWidth*0.15,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20), // Adjust the value as needed
+                      ),child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: ElevatedButton(onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const Screen1()));
+                        }, child: Text("Back",style:textStyleForAllText ())),
+                      )),
+                )
               ],
             ),
             const Spacer(),
-            Row(
 
-              children: [
-                const SizedBox(width:screenWidth*0.10,height: screenHeight*0.10,),
-                Container(
-                  alignment: Alignment.center,
-                  width: screenWidth*.8,
-                  height: screenHeight*0.06,
-                  child:  Text('Bottom CAM Preview ',style: textStyleBelowScreen ()
-                      ),
-                ),
-
-
-
-              ],
-            ),
             const SizedBox(height: 20),
           ],
         ),
@@ -80,6 +93,7 @@ class _BottomCameraviewState extends State<BottomCameraview> {
     );
   }
 }
+
 
 
 

@@ -55,7 +55,7 @@ class _DataLogScreenState extends State<DataLogScreen> {
   }
 
   TextStyle textStyleForAllText() {
-    return const TextStyle(fontSize: 18, color: Colors.white);
+    return const TextStyle(fontSize: 33, color: Colors.white);
   }
 
   TextStyle textStyleBelowScreen() {
@@ -92,17 +92,17 @@ class _DataLogScreenState extends State<DataLogScreen> {
                     style: TextStyle(fontSize: 40, fontWeight: FontWeight.normal, color: Colors.white),
                   ),
                 ),
-                Container(
-                  color: Colors.blue,
+                SizedBox(
+
                   width: screenWidth * 0.15,
                   child: Column(
                     children: [
                       Row(
                         children: [
-                          const Icon(Icons.calendar_month_rounded, color: Colors.white),
+                          const Icon(Icons.calendar_month_rounded, color: Colors.white,size: datetimeiconsize,),
                           Text(
                             DateFormat('EEEE dd MMM').format(DateTime.now()),
-                            style: textStyleForAllText(),
+                            style: datetimefont(),
                           ),
                         ],
                       ),
@@ -110,7 +110,7 @@ class _DataLogScreenState extends State<DataLogScreen> {
                         children: [
                           Text(
                             DateFormat('            HH:mm:ss').format(DateTime.now()),
-                            style: textStyleForAllText(),
+                            style: datetimefont(),
                           ),
                         ],
                       ),
@@ -145,7 +145,7 @@ class _DataLogScreenState extends State<DataLogScreen> {
                                     screenwidth: screenWidth,
                                     screenheight: screenHeight,
                                     innertext: _dataList[index]['name'] ?? "null",
-                                    selectedcolor: _dataList[index] == selectedAgenttoview ? Colors.red : Colors.blue,
+                                    selectedcolor: _dataList[index] == selectedAgenttoview ? Colors.greenAccent : Colors.blue,
                                   ),
                                 ),
                                 Padding(
@@ -170,93 +170,109 @@ class _DataLogScreenState extends State<DataLogScreen> {
                   Column(
                     children: [
                       Container(
-                        height: screenHeight * .06,
-                        width: screenWidth * 0.10,
+                        height:screenHeight*.1,
+                        width: screenWidth*0.15,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (BuildContext context) => const ViewDataLogScreen()),
-                            );
-                          },
-                          child: Text('View', style: textStyleForAllText()),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (BuildContext context) => const ViewDataLogScreen()),
+                              );
+                            },
+                            child: Text('View', style: textStyleForAllText()),
+                          ),
                         ),
                       ),
                       const SizedBox(height: 20),
                       Container(
-                        height: screenHeight * .06,
-                        width: screenWidth * 0.10,
+                        height:screenHeight*.1,
+                        width: screenWidth*0.15,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            // Action for print button
-                          },
-                          child: Text('Print', style: textStyleForAllText()),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // Action for print button
+                            },
+                            child: Text('Print', style: textStyleForAllText()),
+                          ),
                         ),
                       ),
                       const SizedBox(height: 20),
                       Container(
-                        height: screenHeight * .06,
-                        width: screenWidth * 0.10,
+                        height:screenHeight*.1,
+                        width: screenWidth*0.15,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            // Action for email button
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // Action for email button
 
-                          },
-                          child: Text('Email', style: textStyleForAllText()),
+                            },
+                            child: Text('Email', style: textStyleForAllText()),
+                          ),
                         ),
                       ),
                       const SizedBox(height: 20),
                       Container(
-                        height: screenHeight * .06,
-                        width: screenWidth * 0.10,
+                        height:screenHeight*.1,
+                        width: screenWidth*0.15,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(builder: (BuildContext context) => const Screen2()),
-                            // );
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(builder: (BuildContext context) => const Screen2()),
+                              // );
 
-                            _deleteSelectedAgent() ;
-                            setState(() {
+                              _deleteSelectedAgent() ;
+                              setState(() {
 
-                            });
+                              });
 
-                          },
-                          child: Text('Delete', style: textStyleForAllText()),
+                            },
+                            child: Text('Delete', style: textStyleForAllText()),
+                          ),
                         ),
                       ),
                       const SizedBox(height: 20),
                       Container(
-                        height: screenHeight * .06,
-                        width: screenWidth * 0.10,
+                        height:screenHeight*.1,
+                        width: screenWidth*0.15,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (BuildContext context) => const Screen1()),
-                            );
-                          },
-                          child: Text('Home', style: textStyleForAllText()),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (BuildContext context) => const Screen1()),
+                              );
+                            },
+                            child: Text('Home', style: textStyleForAllText()),
+                          ),
                         ),
                       ),
                       const SizedBox(height: 20),
                     ],
                   ),
+                  SizedBox(width: 40,)
                 ],
               )
             else

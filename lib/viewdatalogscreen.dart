@@ -61,20 +61,20 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
                 Container(
                     alignment: Alignment.center,
                     width: screenWidth*0.60 ,child: const Text("Knemetic solutions",style: TextStyle(fontSize:40,fontWeight:FontWeight.normal,color:Colors.white),)),
-                Container(
-                  color:Colors.blue,
+                SizedBox(
+
                   width: screenWidth*0.15,
                   child: Column(
                     children: [
                       Row(
                         children: [
-                          const Icon(Icons.calendar_month_rounded,color:Colors.white),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style:textStyleForAllText ()),
+                          const Icon(Icons.calendar_month_rounded,color:Colors.white,size: datetimeiconsize,),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style:datetimefont()),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: textStyleForAllText ()),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: datetimefont()),
                         ],
                       ),
                     ],
@@ -115,35 +115,35 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
             Row(
               children: [
                   Column(children: [
-                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "MC", percentagetext: selectedAgenttoview?['MC'] ?? "null"),
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "MOISTURE", percentagetext: selectedAgenttoview?['MC'] ?? "null"),
                   const SizedBox(height: screenHeight*0.00925),
-                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "PB", percentagetext: selectedAgenttoview?['PB'] ?? "null"),
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "PEA BERRY", percentagetext: selectedAgenttoview?['PB'] ?? "null"),
                   const SizedBox(height: screenHeight*0.00925),
-                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "AAA", percentagetext: selectedAgenttoview?['AAA'] ?? "null"),
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "SIZE-AAA", percentagetext: selectedAgenttoview?['AAA'] ?? "null"),
                   const SizedBox(height: screenHeight*0.00925),
-                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "AA", percentagetext: selectedAgenttoview?['AA'] ?? "null"),
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "SIZE-AA", percentagetext: selectedAgenttoview?['AA'] ?? "null"),
                   const SizedBox(height: screenHeight*0.00925),
-                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "A", percentagetext: selectedAgenttoview?['A'] ?? "null"),
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "SIZE-A", percentagetext: selectedAgenttoview?['A'] ?? "null"),
                   const SizedBox(height: screenHeight*0.00925),
-                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "B", percentagetext: selectedAgenttoview?['B'] ?? "null"),
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "SIZE-B", percentagetext: selectedAgenttoview?['B'] ?? "null"),
                   const SizedBox(height: screenHeight*0.00925),
 
                 ],),
 
 
-                const SizedBox(width:screenWidth*0.20,),
+                const SizedBox(width:screenWidth*0.12,),
                  Column(children: [
-                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "C", percentagetext: selectedAgenttoview?['C'] ?? "null"),
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "SIZE-C", percentagetext: selectedAgenttoview?['C'] ?? "null"),
                   const SizedBox(height: screenHeight*0.00925),
-                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "BB", percentagetext:selectedAgenttoview?['BB'] ?? "null"),
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "BLACK BROWN", percentagetext:selectedAgenttoview?['BB'] ?? "null"),
                   const SizedBox(height: screenHeight*0.00925),
-                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "BL", percentagetext: selectedAgenttoview?['BL'] ?? "null"),
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "BLEACHES", percentagetext: selectedAgenttoview?['BL'] ?? "null"),
                   const SizedBox(height: screenHeight*0.00925),
-                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "BERRY", percentagetext: selectedAgenttoview?['BERRY'] ?? "null"),
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "BERRY BORES", percentagetext: selectedAgenttoview?['BERRY'] ?? "null"),
                   const SizedBox(height: screenHeight*0.00925),
-                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "BITS", percentagetext: selectedAgenttoview?['BITS'] ?? "null"),
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "BITS & BROKEN", percentagetext: selectedAgenttoview?['BITS'] ?? "null"),
                   const SizedBox(height: screenHeight*0.00925),
-                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "HUSK/Stone", percentagetext:selectedAgenttoview?['HUSK/Stone'] ?? "null"),
+                  ResultScreenWidget(screenWidth: screenWidth, screenHeight: screenHeight, innertext: "HUSK/STONE", percentagetext:selectedAgenttoview?['HUSK/Stone'] ?? "null"),
                   const SizedBox(height: screenHeight*0.00925,),
 
 
@@ -151,21 +151,24 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
                 ],),
 
 
-                const SizedBox(width:screenWidth*0.015,),
+                const SizedBox(width:50),
 
                 Column(children: [
                   Container(
 
-                    height:screenHeight*.06,
-                    width: screenWidth*0.10,
+                    height:screenHeight*.1,
+                    width: screenWidth*0.15,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(screenHeight*0.0185), // Adjust the value as needed
+                      borderRadius: BorderRadius.circular(20), // Adjust the value as needed
                     ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Action for top camera view button
-                      },
-                      child: Text('Save',style:textStyleForAllText ()),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Action for top camera view button
+                        },
+                        child: Text('Save',style:textStyleForAllText ()),
+                      ),
                     ),
                   ),
 
@@ -176,17 +179,20 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
 
 
                   Container(
-                    height:screenHeight*.06,
-                    width: screenWidth*0.10,
+                    height:screenHeight*.1,
+                    width: screenWidth*0.15,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(screenHeight*0.0185), // Adjust the value as needed
+                      borderRadius: BorderRadius.circular(20), // Adjust the value as needed
                     ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Action for top camera view button
-                      },
-                      child:  Text('Print ',style:textStyleForAllText ()
-                          ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Action for top camera view button
+                        },
+                        child:  Text('Print ',style:textStyleForAllText ()
+                            ),
+                      ),
                     ),
                   ),
 
@@ -194,18 +200,21 @@ class _ViewDataLogScreenState extends State<ViewDataLogScreen> {
 
                   const SizedBox(height: screenHeight*0.037,),//
                   Container(
-                    height:screenHeight*.06,
-                    width: screenWidth*0.10,
+                    height:screenHeight*.1,
+                    width: screenWidth*0.15,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(screenHeight*0.0185), // Adjust the value as needed
+                      borderRadius: BorderRadius.circular(20), // Adjust the value as needed
                     ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Action for top camera view button
-                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const Screen1()));
-                      },
-                      child:  Text('Home ',style:textStyleForAllText ()
-                          ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Action for top camera view button
+                          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const Screen1()));
+                        },
+                        child:  Text('Home ',style:textStyleForAllText ()
+                            ),
+                      ),
                     ),
                   ),
 

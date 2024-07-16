@@ -7,12 +7,13 @@ class color_setting_button extends StatefulWidget {
    color_setting_button({
     super.key,
     required this.screenheight,
-    required this.screenwidth, required this.myText, required this.myicon, required this.iconcolors,
+    required this.screenwidth, required this.myText, required this.myicon, required this.iconcolors, required this.myText2,
   });
 
   final double screenheight;
   final double screenwidth;
   final String myText ;
+  final String myText2 ;
   final IconData myicon ;
   final Color iconcolors ;
   @override
@@ -38,6 +39,7 @@ class _color_setting_buttonState extends State<color_setting_button> {
             Icon(widget.myicon,color:widget.iconcolors,size:110,),
             const SizedBox(height: 10,),
             Text(widget.myText,style: textStyleForAllText ()),
+            Text(widget.myText2,style: textStyleForAllText ()),
           ],
         ),
       ),

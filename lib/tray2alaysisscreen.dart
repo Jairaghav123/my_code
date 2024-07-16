@@ -37,20 +37,20 @@ class _Tray2AnalysisState extends State<Tray2Analysis> {
                 Container(
                     alignment: Alignment.center,
                     width: screenWidth*0.60 ,child: const Text("Knemetic solutions",style: TextStyle(fontSize:40,fontWeight:FontWeight.normal,color:Colors.white),)),
-                Container(
-                  color:Colors.blue,
+                SizedBox(
+
                   width: screenWidth*0.15,
                   child: Column(
                     children: [
                       Row(
                         children: [
-                          const Icon(Icons.calendar_month_rounded,color:Colors.white),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: textStyleForAllText ()),
+                          const Icon(Icons.calendar_month_rounded,color:Colors.white,size:datetimeiconsize,),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: datetimefont()),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: textStyleForAllText ()),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: datetimefont()),
                         ],
                       ),
                     ],
@@ -69,7 +69,7 @@ class _Tray2AnalysisState extends State<Tray2Analysis> {
               child:  Column(
                 mainAxisAlignment:MainAxisAlignment.center,
                 children: [
-                  Container(width:screenWidth*0.8,height:screenHeight*0.1, decoration: BoxDecoration(
+                  Container(width:screenWidth*0.8,height:screenHeight*0.07, decoration: BoxDecoration(
                     color:Colors.blue,
                     borderRadius: BorderRadius.circular(10), // Adjust the value as needed
                   ),),
@@ -89,7 +89,7 @@ class _Tray2AnalysisState extends State<Tray2Analysis> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
-                  alignment: Alignment.center,
+                 // alignment: Alignment.center,
                   height:screenHeight*.1,
                   width: screenWidth*0.15,
                   decoration: BoxDecoration(
@@ -108,7 +108,7 @@ class _Tray2AnalysisState extends State<Tray2Analysis> {
                 const SizedBox(width:10,height:50,),
 
                 Container(
-                  alignment: Alignment.center,
+                 // alignment: Alignment.center,
                   height:screenHeight*.1,
                   width: screenWidth*0.15,
                   decoration: BoxDecoration(
@@ -121,13 +121,19 @@ class _Tray2AnalysisState extends State<Tray2Analysis> {
                         // Action for top camera view button
                         Navigator.pushNamed(context,"Tray 3 Analysis Screen");
                       },
-                      child: Text('Insert Tray3 Next ',style: textStyleForAllText ()),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Insert Tray 3',style: textStyleForAllText ()),
+                          Text('Next ',style: textStyleForAllText ()),
+                        ],
+                      ),
                     ),
                   ),
                 ),
                 const SizedBox(width:10,),
                 Container(
-                  alignment: Alignment.center,
+                //  alignment: Alignment.center,
                   height:screenHeight*.1,
                   width: screenWidth*0.15,
                   decoration: BoxDecoration(
@@ -145,8 +151,7 @@ class _Tray2AnalysisState extends State<Tray2Analysis> {
                     ),
                   ),
                 ),
-
-
+                const SizedBox(width: 151,)
               ],
             ),
             const Spacer(),

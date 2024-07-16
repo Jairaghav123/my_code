@@ -16,7 +16,7 @@ import 'package:flutter_ics_homescreen/tray1analysisscreen.dart';
 import 'package:flutter_ics_homescreen/tray2alaysisscreen.dart';
 import 'package:flutter_ics_homescreen/tray3analysisscreen.dart';
 import 'package:flutter_ics_homescreen/viewdatalogscreen.dart';
-//import 'package:window_manager/window_manager.dart';
+
 
 
 import 'Data/savedata.dart';
@@ -24,9 +24,8 @@ import 'bootscreen.dart';
 import 'bottomcamera_preview_screen.dart';
 import 'datalogscreen.dart';
 
-void main ()
+void main () async
 {
-
 
 
   runApp(const MyApp());

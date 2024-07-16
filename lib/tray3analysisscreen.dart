@@ -35,20 +35,20 @@ class _Tray3AnalysisState extends State<Tray3Analysis> {
                 Container(
                     alignment: Alignment.center,
                     width: screenWidth*0.60 ,child: const Text("Knemetic solutions",style: TextStyle(fontSize:40,fontWeight:FontWeight.normal,color:Colors.white),)),
-                Container(
-                  color:Colors.blue,
+                SizedBox(
+
                   width: screenWidth*0.15,
                   child: Column(
                     children: [
                       Row(
                         children: [
-                          const Icon(Icons.calendar_month_rounded,color:Colors.white),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: textStyleForAllText ()),
+                          const Icon(Icons.calendar_month_rounded,color:Colors.white,size: datetimeiconsize,),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: datetimefont()),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: textStyleForAllText ()),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: datetimefont()),
                         ],
                       ),
                     ],
@@ -67,7 +67,7 @@ class _Tray3AnalysisState extends State<Tray3Analysis> {
               child:  Column(
                 mainAxisAlignment:MainAxisAlignment.center,
                 children: [
-                  Container(width:screenWidth*0.8,height:screenHeight*0.1, decoration: BoxDecoration(
+                  Container(width:screenWidth*0.8,height:screenHeight*0.07, decoration: BoxDecoration(
                     color:Colors.blue,
                     borderRadius: BorderRadius.circular(10), // Adjust the value as needed
                   ),),
@@ -87,7 +87,7 @@ class _Tray3AnalysisState extends State<Tray3Analysis> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
-                  alignment: Alignment.center,
+                 // alignment: Alignment.center,
                   height:screenHeight*.1,
                   width: screenWidth*0.15,
                   decoration: BoxDecoration(
@@ -106,7 +106,7 @@ class _Tray3AnalysisState extends State<Tray3Analysis> {
                 const SizedBox(width:10,height:50,),
 
                 Container(
-                  alignment: Alignment.center,
+                 // alignment: Alignment.center,
                   height:screenHeight*.1,
                   width: screenWidth*0.15,
                   decoration: BoxDecoration(
@@ -117,7 +117,8 @@ class _Tray3AnalysisState extends State<Tray3Analysis> {
                     child: ElevatedButton(
                       onPressed: () {
                         // Action for top camera view button
-                        Navigator.pushNamed(context, "viewjsondata");
+                      //  Navigator.pushNamed(context, "viewjsondata");
+                        Navigator.pushNamed(context, "Results Screen");
                       },
                       child:  Text('Finish ',style:textStyleForAllText ()),
                     ),
@@ -125,7 +126,7 @@ class _Tray3AnalysisState extends State<Tray3Analysis> {
                 ),
                 const SizedBox(width:10,),
                 Container(
-                  alignment: Alignment.center,
+                //  alignment: Alignment.center,
                   height:screenHeight*.1,
                   width: screenWidth*0.15,
                   decoration: BoxDecoration(
@@ -144,7 +145,7 @@ class _Tray3AnalysisState extends State<Tray3Analysis> {
                   ),
                 ),
 
-
+                const SizedBox(width: 151,)
               ],
             ),
             const Spacer(),
@@ -157,11 +158,11 @@ class _Tray3AnalysisState extends State<Tray3Analysis> {
               ),
               width: screenWidth*.8,
               height: screenHeight*0.1,
-              child:  const Row(
+              child:   Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.analytics_outlined,color: Colors.white,size: iconbelowscreen,),
-                  Text('Tray 3 Analysis in progress please wait ',style:TextStyle(color:Colors.white,fontSize: textbelowscreen),),
+                  const Icon(Icons.analytics_outlined,color: Colors.white,size: iconbelowscreen,),
+                  Text('Tray 3 Analysis in progress please wait ',style:textStyleBelowScreen()),
                 ],
               ),
             ),

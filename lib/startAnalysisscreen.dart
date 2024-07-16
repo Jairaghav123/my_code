@@ -72,19 +72,19 @@ class _StartAnalysisState extends State<StartAnalysis> {
                         color: Colors.white),
                   ),
                 ),
-                Container(
-                  color: Colors.blue,
+                SizedBox(
+
                   width: screenWidth * 0.15,
                   child: Column(
                     children: [
                       Row(
                         children: [
-                          const Icon(Icons.calendar_month_rounded),
+                          const Icon(Icons.calendar_month_rounded,color:Colors.white,size:datetimeiconsize,),
                           Text(
                             DateFormat('EEEE dd MMM')
                                 .format(DateTime.now())
                                 .toString(),
-                            style: textStyleForAllText(),
+                            style: datetimefont()
                           ),
                         ],
                       ),
@@ -94,7 +94,7 @@ class _StartAnalysisState extends State<StartAnalysis> {
                             DateFormat('            HH:mm:ss')
                                 .format(DateTime.now())
                                 .toString(),
-                            style: textStyleForAllText(),
+                            style: datetimefont()
                           ),
                         ],
                       ),
@@ -103,9 +103,9 @@ class _StartAnalysisState extends State<StartAnalysis> {
                 ),
               ],
             ),
-            const Spacer(),
+            const SizedBox(height: 50,),
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Column(
                   children: [
@@ -152,7 +152,7 @@ class _StartAnalysisState extends State<StartAnalysis> {
                     const SizedBox(height: 20),
                   ],
                 ),
-                const SizedBox(width: screenWidth * 0.10),
+                const SizedBox(width: screenWidth * 0.15),
                 Column(
                   children: [
                     AnalysisScreenWidget(
@@ -201,44 +201,68 @@ class _StartAnalysisState extends State<StartAnalysis> {
                 ),
               ],
             ),
+
+            const SizedBox(height: 50,),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  width: 140,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () async {
-                      _saveData();
-                      setState(() {});
-                    },
-                    child: Text("Save", style: textStyleForAllText()),
+                Container(
+
+                  height:screenHeight*.1,
+                  width: screenWidth*0.15,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20), // Adjust the value as needed
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        _saveData();
+                        setState(() {});
+                      },
+                      child: Text("Save", style: textStyleForAllText()),
+                    ),
                   ),
                 ),
-                SizedBox(
-                  width: 140,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "Insert Tray pop up Screen");
-                    },
-                    child: Text("Next", style: textStyleForAllText()),
+                Container(
+
+                  height:screenHeight*.1,
+                  width: screenWidth*0.15,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20), // Adjust the value as needed
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, "Insert Tray pop up Screen");
+                      },
+                      child: Text("Next", style: textStyleForAllText()),
+                    ),
                   ),
                 ),
-                SizedBox(
-                  width: 140,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "HomeScreen");
-                    },
-                    child: Text("Back", style: textStyleForAllText()),
+                Container(
+
+                  height:screenHeight*.1,
+                  width: screenWidth*0.15,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20), // Adjust the value as needed
                   ),
-                ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, "HomeScreen");
+                      },
+                      child: Text("Back", style: textStyleForAllText()),
+                    ),
+                  ),
+                )
               ],
             ),
-            const Spacer(),
-            const SizedBox(width: screenWidth * 0.10, height: screenHeight * 0.10),
+           // const Spacer(),
+           // const SizedBox(width: screenWidth * 0.10, height: screenHeight * 0.08),
+            Spacer(),
             Container(
               alignment: Alignment.center,
               width: screenWidth * .8,
@@ -253,9 +277,10 @@ class _StartAnalysisState extends State<StartAnalysis> {
               Container(
                 color: Colors.white,
                 child: VirtualKeyboard(
-                  height: 300,
+                  height: 200,
                   width: screenWidth * 0.8,
                   textColor: Colors.black,
+                  fontSize: 28,
                   type: VirtualKeyboardType.Alphanumeric,
                   onKeyPress: _onKeyPress,
                 ),

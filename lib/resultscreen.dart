@@ -76,20 +76,20 @@ class _ResultScreenState extends State<ResultScreen> {
                         color: Colors.white),
                   ),
                 ),
-                Container(
-                  color: Colors.blue,
+                SizedBox(
+
                   width: screenWidth * 0.15,
                   child: Column(
                     children: [
                       Row(
                         children: [
                           const Icon(Icons.calendar_month_rounded,
-                              color: Colors.white),
+                              color: Colors.white,size:datetimeiconsize,),
                           Text(
                             DateFormat('EEEE dd MMM')
                                 .format(DateTime.now())
                                 .toString(),
-                            style: textStyleForAllText(),
+                            style: datetimefont(),
                           ),
                         ],
                       ),
@@ -98,7 +98,7 @@ class _ResultScreenState extends State<ResultScreen> {
                           Text(
                             DateFormat('            HH:mm:ss').format(
                                 DateTime.now()).toString(),
-                            style: textStyleForAllText(),
+                            style: datetimefont(),
                           ),
                         ],
                       ),
@@ -155,82 +155,82 @@ class _ResultScreenState extends State<ResultScreen> {
                       ResultScreenWidget(
                           screenWidth: screenWidth,
                           screenHeight: screenHeight,
-                          innertext: "MC",
+                          innertext: "MOISTURE",
                           percentagetext: _dataList[_dataList.length -
                               1]['MC'] ?? "null"),
                       const SizedBox(height: 10),
                       ResultScreenWidget(
                           screenWidth: screenWidth,
                           screenHeight: screenHeight,
-                          innertext: "PB",
+                          innertext: "PEA BERRY",
                           percentagetext: _dataList[_dataList.length -
                               1]['PB'] ?? "null"),
                       const SizedBox(height: 10),
                       ResultScreenWidget(
                           screenWidth: screenWidth,
                           screenHeight: screenHeight,
-                          innertext: "AAA",
+                          innertext: "SIZE-AAA",
                           percentagetext: _dataList[_dataList.length -
                               1]['AAA'] ?? "null"),
                       const SizedBox(height: 10),
                       ResultScreenWidget(
                           screenWidth: screenWidth,
                           screenHeight: screenHeight,
-                          innertext: "AA",
+                          innertext: "SIZE-AA",
                           percentagetext: _dataList[_dataList.length -
                               1]['AA'] ?? "null"),
                       const SizedBox(height: 10),
                       ResultScreenWidget(
                           screenWidth: screenWidth,
                           screenHeight: screenHeight,
-                          innertext: "A",
+                          innertext: "SIZE-A",
                           percentagetext: _dataList[_dataList.length -
                               1]['A'] ?? "null"),
                       const SizedBox(height: 10),
                       ResultScreenWidget(
                           screenWidth: screenWidth,
                           screenHeight: screenHeight,
-                          innertext: "B",
+                          innertext: "SIZE-B",
                           percentagetext: _dataList[_dataList.length -
                               1]['B'] ?? "null"),
                       const SizedBox(height: 10),
                     ],
                   ),
-                  const SizedBox(width: screenWidth * 0.20),
+                  const SizedBox(width: screenWidth * 0.10),
                   Column(
                     children: [
                       ResultScreenWidget(
                           screenWidth: screenWidth,
                           screenHeight: screenHeight,
-                          innertext: "C",
+                          innertext: "SIZE-C",
                           percentagetext: _dataList[_dataList.length -
                               1]['C'] ?? "null"),
                       const SizedBox(height: 10),
                       ResultScreenWidget(
                           screenWidth: screenWidth,
                           screenHeight: screenHeight,
-                          innertext: "BB",
+                          innertext: "BLACK & BROWN",
                           percentagetext: _dataList[_dataList.length -
                               1]['BB'] ?? "null"),
                       const SizedBox(height: 10),
                       ResultScreenWidget(
                           screenWidth: screenWidth,
                           screenHeight: screenHeight,
-                          innertext: "BL",
+                          innertext: "BLEACHES",
                           percentagetext: _dataList[_dataList.length -
                               1]['BL'] ?? "null"),
                       const SizedBox(height: 10),
                       ResultScreenWidget(
                           screenWidth: screenWidth,
                           screenHeight: screenHeight,
-                          innertext: "BERRY",
+                          innertext: "BERRY BORES",
                           percentagetext: _dataList[_dataList.length -
                               1]['BERRY'] ?? "null"),
                       const SizedBox(height: 10),
                       ResultScreenWidget(
                           screenWidth: screenWidth,
                           screenHeight: screenHeight,
-                          innertext: "BITS",
+                          innertext: "BITS & BROKEN",
                           percentagetext: _dataList[_dataList.length -
                               1]['BITS'] ?? "null"),
                       const SizedBox(height: 10),
@@ -243,74 +243,95 @@ class _ResultScreenState extends State<ResultScreen> {
                       const SizedBox(height: 10),
                     ],
                   ),
-                  const SizedBox(width: 30),
+                  const SizedBox(width: 50),
                   Column(
                     children: [
                       Container(
-                        height: screenHeight * .06,
-                        width: screenWidth * 0.10,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                              20), // Adjust the value as needed
-                        ),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            // Action for save button
+                        // height: screenHeight * .06,
+                        // width: screenWidth * 0.10,
 
-                            saveAsPdf();
-                            setState(() {
+                        height:screenHeight*.1,
+                        width: screenWidth*0.15,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                              20), // Adjust the value as needed
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // Action for save button
 
-                            });
-                          },
-                          child: Text('Save', style: textStyleForAllText()),
+                              saveAsPdf();
+                              setState(() {
+
+                              });
+                            },
+                            child: Text('Save', style: textStyleForAllText()),
+                          ),
                         ),
                       ),
                       const SizedBox(height: 20),
                       Container(
-                        height: screenHeight * .06,
-                        width: screenWidth * 0.10,
+                        // height: screenHeight * .06,
+                        // width: screenWidth * 0.10,
+                        height:screenHeight*.1,
+                        width: screenWidth*0.15,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
                               20), // Adjust the value as needed
                         ),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            // Action for discard button
-                          },
-                          child: Text('Discard', style: textStyleForAllText()),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // Action for discard button
+                            },
+                            child: Text('Discard', style: textStyleForAllText()),
+                          ),
                         ),
                       ),
                       const SizedBox(height: 20),
                       Container(
-                        height: screenHeight * .06,
-                        width: screenWidth * 0.10,
+                        // height: screenHeight * .06,
+                        // width: screenWidth * 0.10,
+                        height:screenHeight*.1,
+                        width: screenWidth*0.15,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
                               20), // Adjust the value as needed
                         ),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            // Action for print button
-                          },
-                          child: Text('Print', style: textStyleForAllText()),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // Action for print button
+                            },
+                            child: Text('Print', style: textStyleForAllText()),
+                          ),
                         ),
                       ),
                       const SizedBox(height: 20),
                       Container(
-                        height: screenHeight * .06,
-                        width: screenWidth * 0.10,
+                        // height: screenHeight * .06,
+                        // width: screenWidth * 0.10,
+                        height:screenHeight*.1,
+                        width: screenWidth*0.15,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
                               20), // Adjust the value as needed
                         ),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            // Action for home button
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (
-                                    BuildContext context) => const Screen1()));
-                          },
-                          child: Text('Home', style: textStyleForAllText()),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // Action for home button
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (
+                                      BuildContext context) => const Screen1()));
+                            },
+                            child: Text('Home', style: textStyleForAllText()),
+                          ),
                         ),
                       ),
                       const SizedBox(height: 20),

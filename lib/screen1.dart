@@ -41,20 +41,20 @@ class _Screen1State extends State<Screen1> {
                  Container(
                    alignment: Alignment.center,
                      width: screenWidth*0.60 ,child: const Text("Knemetic solutions",style: TextStyle(fontSize:40,fontWeight:FontWeight.normal,color:Colors.white),)),
-                Container(
-                  color:Colors.blue,
+                SizedBox(
+
                   width: screenWidth*0.15,
                   child: Column(
                     children: [
                       Row(
                         children: [
-                          const Icon(Icons.calendar_month_rounded,color:Colors.white),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: textStyleBelowScreen ()),
+                          const Icon(Icons.calendar_month_rounded,color:Colors.white,size:datetimeiconsize,),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: datetimefont()),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: textStyleBelowScreen ()),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: datetimefont()),
                         ],
                       ),
                     ],
@@ -146,6 +146,7 @@ class _screen1buttonState extends State<screen1button> {
             Navigator.pushNamed(context, widget.myobject );
           });
         },
+        style: ButtonStyle(backgroundColor:MaterialStateProperty.all(Colors.blue)),
         child:  Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

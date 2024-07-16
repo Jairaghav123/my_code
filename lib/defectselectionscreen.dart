@@ -42,20 +42,20 @@ class _defectselectionState extends State<defectselection> {
                 Container(
                     alignment: Alignment.center,
                     width: screenWidth*0.60 ,child: const Text("Knemetic solutions",style: TextStyle(fontSize:40,fontWeight:FontWeight.normal,color:Colors.white),)),
-                Container(
-                  color:Colors.blue,
+                SizedBox(
+
                   width: screenWidth*0.15,
                   child: Column(
                     children: [
                       Row(
                         children: [
-                          const Icon(Icons.calendar_month_rounded),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style:textStyleForAllText ()),
+                          const Icon(Icons.calendar_month_rounded,color:Colors.white,size: datetimeiconsize,),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style:datetimefont()),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: textStyleForAllText ()),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: datetimefont()),
                         ],
                       ),
                     ],
@@ -69,8 +69,10 @@ class _defectselectionState extends State<defectselection> {
 
             const Spacer(),
              Row(
-               mainAxisAlignment:MainAxisAlignment.start ,
+               mainAxisAlignment:MainAxisAlignment.spaceEvenly ,
                children: [
+
+                 //SizedBox(width: 100,),
                  Column(
 
                    children: [
@@ -88,7 +90,7 @@ class _defectselectionState extends State<defectselection> {
                    ],
                  ),
 
-                 const SizedBox(width:screenWidth*0.35,),
+                 // const SizedBox(width:screenWidth*0.33,),
                  Column(
                    children: [
                      defectselectioncolumn(screenwidth: screenWidth, screenheight: screenHeight, innertext: 'C',firstvalue: true,),
@@ -106,16 +108,23 @@ class _defectselectionState extends State<defectselection> {
                  )
                ],
              ),
-
+             const SizedBox(height:20),
             Row(
               mainAxisAlignment:MainAxisAlignment.end,
               children: [
 
-                SizedBox(width:120,height:60,child: ElevatedButton(onPressed: (){
+                Container(height:screenHeight*.1,
+                    width: screenWidth*0.15,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20), // Adjust the value as needed
+                    ),child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: ElevatedButton(onPressed: (){
 
                   Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const Screen2()));
 
-                }, child: Text("Back",style: textStyleForAllText ())))
+                }, child: Text("Back",style: textStyleForAllText ())),
+                    ))
               ],
             ),
             const Spacer(),

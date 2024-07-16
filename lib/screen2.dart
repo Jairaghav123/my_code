@@ -39,19 +39,19 @@ class _Screen2State extends State<Screen2> {
                 Container(
                     alignment: Alignment.center,
                     width: screenWidth*0.60 ,child: const Text("Knemetic solutions",style: TextStyle(fontSize:40,fontWeight:FontWeight.normal,color:Colors.white),)),Container(
-                  color:Colors.blue,
+
                   width: screenWidth*0.15,
                   child: Column(
                     children: [
                       Row(
                         children: [
-                          const Icon(Icons.calendar_month_rounded,color:Colors.white),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: textStyleForAllText ()),
+                          const Icon(Icons.calendar_month_rounded,color:Colors.white,size: datetimeiconsize,),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: datetimefont()),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: textStyleForAllText ()),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: datetimefont()),
                         ],
                       ),
                     ],
@@ -62,13 +62,14 @@ class _Screen2State extends State<Screen2> {
             ),
             const Spacer(flex:2,),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const Spacer(flex:1),
                 Container(
-                  height:screenHeight*.15,
-                  width: screenWidth*0.15,
+                  height:screenHeight*.18,
+                  width: screenWidth*0.18,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30), // Adjust the value as needed
+                    borderRadius: BorderRadius.circular(40), // Adjust the value as needed
                   ),
                   child: ElevatedButton(
                     onPressed: () {
@@ -79,19 +80,20 @@ class _Screen2State extends State<Screen2> {
                     child:  Column(
                       mainAxisAlignment:MainAxisAlignment.center,
                       children: [
-                        const Icon(Icons.camera,size:50,),
-                        Text('Top camera and light settings',style: textStyleForAllText ()),
+                        const Icon(Icons.camera,size:80,),
+                        Text('Top camera and',style: settingscreentext ()),
+                        Text('Light settings',style: settingscreentext ()),
                       ],
                     ),
                   ),
                 ),
 
-
+                const Spacer(flex:1),
                 Container(
-                  height:screenHeight*.15,
-                  width: screenWidth*0.15,
+                  height:screenHeight*.18,
+                  width: screenWidth*0.18,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30), // Adjust the value as needed
+                    borderRadius: BorderRadius.circular(40), // Adjust the value as needed
                   ),
                   child: ElevatedButton(
                     onPressed: () {
@@ -101,43 +103,76 @@ class _Screen2State extends State<Screen2> {
                     child:  Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Icon(Icons.camera_alt,size:50,),
-                        Text('Bottom camera and light settings',style: textStyleForAllText ()),
+                        const Icon(Icons.camera_alt,size:80,),
+                        Text('Bottom camera and ',style: settingscreentext ()),
+                        Text('Light settings',style: settingscreentext ()),
                       ],
                     ),
                   ),
                 ),
-
+                const Spacer(flex:1),
                 Container(
-                  height:screenHeight*.15,
-                  width: screenWidth*0.15,
+                  height:screenHeight*.18,
+                  width: screenWidth*0.18,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30), // Adjust the value as needed
+                    borderRadius: BorderRadius.circular(40), // Adjust the value as needed
                   ),
                   child: ElevatedButton(
                     onPressed: () {
                       // Action for top camera view button
                       Navigator.pushNamed(context, "Defect Selection Screen");
                     },
-                    child: Text('Defect selction setting',style: textStyleForAllText ()),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(Icons.report_problem_outlined,size:80,),
+                        Text('Defect selection setting',style: settingscreentext ()),
+                        const SizedBox(height: 28,)
+                      ],
+                    ),
                   ),
                 ),
-
+                const Spacer(flex:1),
+                Container(
+                  height:screenHeight*.18,
+                  width: screenWidth*0.18,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(40), // Adjust the value as needed
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // Action for top camera view button
+                     // Navigator.pushNamed(context, "Defect Selection Screen");
+                    },
+                    child: Column(
+                      mainAxisAlignment:MainAxisAlignment.center,
+                      children: [
+                        const Icon(Icons.person,size:80,),
+                        Text('Customer info',style: settingscreentext ()),
+                        const SizedBox(height: 28,)
+                      ],
+                    ),
+                  ),
+                ),
+                const Spacer(flex:1),
               ],
             ),
-            const SizedBox(height: 40),
+
+
+            const SizedBox(height: 50),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
                   height:screenHeight*.1,
-                  width: screenWidth*0.10,
+                  width: screenWidth*0.15,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20), // Adjust the value as needed
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: ElevatedButton(
+
                       onPressed: () {
                         // Action for top camera view button
                         Navigator.pushNamed(context, "HomeScreen");
@@ -146,6 +181,7 @@ class _Screen2State extends State<Screen2> {
                     ),
                   ),
                 ),
+                const SizedBox(width: 120,)
 
 
               ],

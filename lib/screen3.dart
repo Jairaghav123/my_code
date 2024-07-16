@@ -39,20 +39,20 @@ class _Screen3State extends State<Screen3> {
                 Container(
                     alignment: Alignment.center,
                     width: screenWidth*0.60 ,child: const Text("Knemetic solutions",style: TextStyle(fontSize:40,fontWeight:FontWeight.normal,color:Colors.white),)),
-                Container(
-                  color:Colors.blue,
+                SizedBox(
+
                   width: screenWidth*0.15,
                   child: Column(
                     children: [
                       Row(
                         children: [
-                          const Icon(Icons.calendar_month_rounded,color:Colors.white),
-                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: textStyleForAllText ()),
+                          const Icon(Icons.calendar_month_rounded,color:Colors.white,size: datetimeiconsize,),
+                          Text(DateFormat('EEEE dd MMM').format(DateTime.now()).toString(), style: datetimefont()),
                         ],
                       ),
                       Row(
                         children: [
-                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: textStyleForAllText ()),
+                          Text( DateFormat('            HH:mm:ss').format(DateTime.now()).toString(), style: datetimefont()),
                         ],
                       ),
                     ],
@@ -65,10 +65,10 @@ class _Screen3State extends State<Screen3> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                color_setting_button(screenheight: screenHeight, screenwidth: screenWidth, myText: 'Mono Color settings', myicon:Icons.settings, iconcolors: Colors.white,),
-                color_setting_button(screenheight: screenHeight, screenwidth: screenWidth, myText: 'RGB Color-Green settings', myicon: Icons.settings, iconcolors: Colors.green,),
-                color_setting_button(screenheight: screenHeight, screenwidth: screenWidth, myText: 'RGB Color-Brown settings', myicon: Icons.settings, iconcolors:Colors.brown,),
-                color_setting_button(screenheight: screenHeight, screenwidth: screenWidth, myText: 'RGB Color-??? settings', myicon: Icons.settings, iconcolors: Colors.black,),
+                color_setting_button(screenheight: screenHeight, screenwidth: screenWidth, myText: 'Mono Color settings', myicon:Icons.settings, iconcolors: Colors.white, myText2: '',),
+                color_setting_button(screenheight: screenHeight, screenwidth: screenWidth, myText: 'RGB Color-Green', myicon: Icons.settings, iconcolors: Colors.green, myText2: 'Settings',),
+                color_setting_button(screenheight: screenHeight, screenwidth: screenWidth, myText: 'RGB Color-Brown', myicon: Icons.settings, iconcolors:Colors.brown, myText2: 'Settings',),
+                color_setting_button(screenheight: screenHeight, screenwidth: screenWidth, myText: 'RGB Color-???', myicon: Icons.settings, iconcolors: Colors.black, myText2: 'Settings',),
         Container(
           height:screenHeight*.25,
           width: screenWidth*0.18,
@@ -111,9 +111,10 @@ class _Screen3State extends State<Screen3> {
             const Spacer(),
             Row(
               children: [
-                 const SizedBox(width:screenWidth*0.10,),
+                 const SizedBox(width:screenWidth*0.23,),
                  SizedBox(
-                  width: screenWidth*.8,
+
+                  width: screenWidth*.5,
                   height: screenHeight*0.06,
                   child:  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -125,16 +126,23 @@ class _Screen3State extends State<Screen3> {
                   ),
                 ),
 
-                const SizedBox(width:5),
-                SizedBox(height:screenHeight*0.07,width:130,child: ElevatedButton(onPressed: (){
+                 const SizedBox(width:130),
+                Container( height:screenHeight*.1,
+                    width: screenWidth*0.15,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20), // Adjust the value as needed
+                    ),child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: ElevatedButton(onPressed: (){
 
                   Navigator.pushNamed(context,"SettingsScreen");
-                }, child: Text("Back",style:textStyleForAllText ()))),
+                }, child: Text("Back",style:textStyleForAllText ())),
+                    )),
 
 
               ],
             ),
-            const SizedBox(height: 20),
+             const SizedBox(height: 20),
           ],
         ),
       ),

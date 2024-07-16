@@ -14,9 +14,10 @@ import 'package:flutter/material.dart';
 // final  TextEditingController fileNameController=TextEditingController();
 // TextEditingController? currentController;
 
-const double screen1iconsize=110 ;
+const double screen1iconsize=130 ;
 const double insertrayiconsize=110 ;
 const double startAnalysisscreenfontsize=20 ;
+const double datetimeiconsize=50 ;
 const double datetimefontsize=20;
 const double textbelowscreen=25 ;
 const double iconbelowscreen=50 ;
@@ -27,7 +28,7 @@ TextStyle  textStyleBelowScreen ()
 {
 
   return
-     const TextStyle(fontSize: 25,color:Colors.white);
+     const TextStyle(fontSize: 30,color:Colors.white);
 
 }
 
@@ -35,7 +36,7 @@ TextStyle  textStyleForAllText ()
 {
 
   return
-    const TextStyle(fontSize: 20,color:Colors.black);
+    const TextStyle(fontSize: 33,color:Colors.black);
 
 }
 
@@ -43,3 +44,24 @@ TextStyle  textStyleForAllText ()
   String filename= 'null'  ;
 
 
+
+
+
+TextStyle  settingscreentext ()
+{
+
+  return
+    const TextStyle(fontSize: 28,color:Colors.black);
+
+}
+
+
+
+
+TextStyle  datetimefont ()
+{
+
+  return
+    const TextStyle(fontSize: 28,color:Colors.white);
+
+}
