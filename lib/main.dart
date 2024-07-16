@@ -16,6 +16,7 @@ import 'package:flutter_ics_homescreen/tray1analysisscreen.dart';
 import 'package:flutter_ics_homescreen/tray2alaysisscreen.dart';
 import 'package:flutter_ics_homescreen/tray3analysisscreen.dart';
 import 'package:flutter_ics_homescreen/viewdatalogscreen.dart';
+//import 'package:window_manager/window_manager.dart';
 
 
 import 'Data/savedata.dart';
@@ -27,15 +28,7 @@ void main ()
 {
 
 
- // WidgetsFlutterBinding.ensureInitialized();
- // await windowManager.ensureInitialized();
- //
- //  // if(Platform.isLinux || Platform.isWindows)
- //  //   {
- //  //
- //  //     WindowManager.instance.setMinimumSize(const Size(1920,1080));
- //  //     WindowManager.instance.setMaximumSize(const Size(1920,1080));
- //  //   }
+
   runApp(const MyApp());
 
 }
